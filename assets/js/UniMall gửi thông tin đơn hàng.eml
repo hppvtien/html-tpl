@@ -1,0 +1,4571 @@
+Delivered-To: hppvtien@gmail.com
+Received: by 2002:a05:6a10:6f10:b0:358:9b70:f223 with SMTP id jd16csp145160pxb;
+        Tue, 8 Nov 2022 19:40:31 -0800 (PST)
+X-Google-Smtp-Source: AMsMyM73E0e92faOrI3r7EpLZwZj9gqMJL8yPMiKnb6kWuIr8Tv7zFn0X1z9xEszFfhrz4TO2DLu
+X-Received: by 2002:a63:1455:0:b0:438:e26b:ab1f with SMTP id 21-20020a631455000000b00438e26bab1fmr49113259pgu.183.1667965231655;
+        Tue, 08 Nov 2022 19:40:31 -0800 (PST)
+ARC-Seal: i=1; a=rsa-sha256; t=1667965231; cv=none;
+        d=google.com; s=arc-20160816;
+        b=xMk+CaRqsPXPuw9HSvHmMTA523fYfM7+PNmD94f7iooR/gFp7SRG57IB9nTcfiJR36
+         XyoQl6uEgBa+SzVZ/ABdPvuQ24gh3MHEeOywkfJ59cSf7Qy/TTT0hDHe/XOj24ocIk9B
+         HRuDb4x/O79v9Mtg2s7s66z9bf+VcQwxXPbrOKAp5r7TOPRDieqFRFasQQkW8dKjQtGt
+         iKDZBrRzEoD6o6mqNqXGlQaRFNubcF64iigdo8Yy9qf8PqePEiZ6mCPV9CkEOEA3lOZJ
+         +a1Q0dl0+cfjc1rgfdUk6CcWhqn81RhTbWgr0Vhr7lZmqy5RTfs++6wvysPFTSQpBAxV
+         EctA==
+ARC-Message-Signature: i=1; a=rsa-sha256; c=relaxed/relaxed; d=google.com; s=arc-20160816;
+        h=mime-version:cc:to:from:subject:date:message-id:dkim-signature;
+        bh=e69qDYkX0JF+dkil7UGwNboHjm/HBds90q5TCd19Dvg=;
+        b=ULGblfIUjSg6H4T0eYZhVHNhY6Me+i9S1sjcKKXJzWjBAM6wv+NAN/z6y3hVT0XgRg
+         Pl1fqQMMS5B7dFbY9ePPUzyJi9WKYWydk1Hx5k9YYTrtBXFnRSu7aXqfakutt6fzvv0p
+         SL5XuvY4tRFqwSuSCgrDSzZf/LUupw3HWH/fu84IBgXBhYpQokEjTp2/xma+IiYd4BMU
+         QgYPpEDqPfnkXKjC1ljg8aMVTuEe0W9RqAmxx09RuWeTfxW8AxjvIa3A7Sr8i8V1CQKz
+         mHDDQTF0+u/Oj8KDwL3rqvWjCI1GTK0ucRu1f0PtFtYbXHiSX9ssC2gxtisCO3jFhu93
+         7HlQ==
+ARC-Authentication-Results: i=1; mx.google.com;
+       dkim=pass header.i=@unimall.vn header.s=2021 header.b=E0QUQsoZ;
+       spf=pass (google.com: domain of noreply@unimall.vn designates 139.99.133.6 as permitted sender) smtp.mailfrom=noreply@unimall.vn;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=unimall.vn
+Return-Path: <noreply@unimall.vn>
+Received: from sv133d6.adsmo.vn (sv133d6.adsmo.vn. [139.99.133.6])
+        by mx.google.com with ESMTPS id u185-20020a6385c2000000b0046fd180640esi14778393pgd.264.2022.11.08.19.40.29
+        for <hppvtien@gmail.com>
+        (version=TLS1_2 cipher=ECDHE-ECDSA-CHACHA20-POLY1305 bits=256/256);
+        Tue, 08 Nov 2022 19:40:30 -0800 (PST)
+Received-SPF: pass (google.com: domain of noreply@unimall.vn designates 139.99.133.6 as permitted sender) client-ip=139.99.133.6;
+Authentication-Results: mx.google.com;
+       dkim=pass header.i=@unimall.vn header.s=2021 header.b=E0QUQsoZ;
+       spf=pass (google.com: domain of noreply@unimall.vn designates 139.99.133.6 as permitted sender) smtp.mailfrom=noreply@unimall.vn;
+       dmarc=pass (p=REJECT sp=REJECT dis=NONE) header.from=unimall.vn
+Received: from unimall.vn (unknown [103.170.122.218])
+	by sv133d6.adsmo.vn (Postfix) with ESMTPSA id E0F2C401D7;
+	Wed,  9 Nov 2022 10:40:22 +0700 (+07)
+DKIM-Signature: v=1; a=rsa-sha256; c=relaxed/relaxed; d=unimall.vn; s=2021;
+	t=1667965224;
+	h=from:from:reply-to:subject:subject:date:date:message-id:message-id:
+	 to:to:cc:cc:mime-version:mime-version:content-type:content-type;
+	bh=e69qDYkX0JF+dkil7UGwNboHjm/HBds90q5TCd19Dvg=;
+	b=E0QUQsoZppRXYhukyTUCQyHF2aYb44Ppet2LpeONCbF55nXXySrK3ZkmBFPMvAUlPSz3tP
+	I4Hqjz2mt5STgDufkxbrqFLNcC3z+igIWikOkUFh/IM3teIC0PgzttfXx7S9PYJupmNSdh
+	J4Oyf2P0td8iSMmHyM4AK3rY5TQV6FA=
+Message-ID: <77c62f211f497eb44c7b9feff02ab365@unimall.vn>
+Date: Wed, 09 Nov 2022 10:48:14 +0700
+Subject: UniMall =?utf-8?Q?g=E1=BB=ADi_th=C3=B4ng?= tin
+ =?utf-8?Q?=C4=91=C6=A1n_h=C3=A0ng?=
+From: Unimall <noreply@unimall.vn>
+To: hppvtien@gmail.com
+Cc: info@unimall.vn
+MIME-Version: 1.0
+Content-Type: multipart/alternative;
+ boundary="_=_swift_1667965694_60a6c25464c4f36d49f163a5803c0519_=_"
+
+
+--_=_swift_1667965694_60a6c25464c4f36d49f163a5803c0519_=_
+Content-Type: text/plain; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns=3D"http://www.w3.=
+org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn:sc=
+hemas-microsoft-com:office:office"><head><meta http-equiv=3D"X-UA-Compatibl=
+e" content=3D"IE=3Dedge" /><meta name=3D"viewport" content=3D"width=3Ddevic=
+e-width, initial-scale=3D1" /><meta http-equiv=3D"Content-Type" content=3D"=
+text/html; charset=3DUTF-8" /><meta name=3D"x-apple-disable-message-reforma=
+tting" /><meta name=3D"apple-mobile-web-app-capable" content=3D"yes" /><met=
+a name=3D"apple-mobile-web-app-status-bar-style" content=3D"black" /><meta =
+name=3D"format-detection" content=3D"telephone=3Dno" /><title></title><styl=
+e type=3D"text/css">
+
+    /* Resets */
+
+    .ReadMsgBody { width: 1=
+00%; background-color: #ebebeb;}
+
+    .ExternalClass {width: 100%; back=
+ground-color: #ebebeb;}
+
+    .ExternalClass, .ExternalClass p, .Externa=
+lClass span, .ExternalClass font, .ExternalClass td, .ExternalClass div {li=
+ne-height:100%;}
+
+    a[x-apple-data-detectors]{
+
+    color:inherit=
+ !important;
+
+    text-decoration:none !important;
+
+    font-size:i=
+nherit !important;
+
+    font-family:inherit !important;
+
+    font-w=
+eight:inherit !important;
+
+    line-height:inherit !important;
+
+   =
+ }
+
+    body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;=
+}
+
+    body {margin:0; padding:0;}
+
+    .yshortcuts a {border-botto=
+m: none !important;}
+
+    .rnb-del-min-width{ min-width: 0 !important; =
+}
+
+    /* Add new outlook css start */
+
+    .templateContainer{
+=
+
+    max-width:590px !important;
+
+    width:auto !important;
+
+   =
+ }
+
+    /* Add new outlook css end */
+
+    /* Image width by defaul=
+t for 3 columns */
+
+    img[class=3D"rnb-col-3-img"] {
+
+    max-wid=
+th:170px;
+
+    }
+
+    /* Image width by default for 2 columns */
+=
+
+    img[class=3D"rnb-col-2-img"] {
+
+    max-width:264px;
+
+    }=
+
+
+    /* Image width by default for 2 columns aside small size */
+
+=
+    img[class=3D"rnb-col-2-img-side-xs"] {
+
+    max-width:180px;
+
+ =
+   }
+
+    /* Image width by default for 2 columns aside big size */
+=
+
+    img[class=3D"rnb-col-2-img-side-xl"] {
+
+    max-width:350px;
+=
+
+    }
+
+    /* Image width by default for 1 column */
+
+    img[cl=
+ass=3D"rnb-col-1-img"] {
+
+    max-width:550px;
+
+    }
+
+    /* I=
+mage width by default for header */
+
+    img[class=3D"rnb-header-img"] =
+{
+
+    max-width:590px;
+
+    }
+
+    /* Ckeditor line-height spa=
+cing */
+
+    .rnb-force-col p, ul, ol{margin:0px!important;}
+
+    .=
+rnb-del-min-width p, ul, ol{margin:0px!important;}
+
+    /* tmpl-2 previ=
+ew */
+
+    .rnb-tmpl-width{ width:100%!important;}
+
+    /* tmpl-11 =
+preview */
+
+    .rnb-social-width{padding-right:15px!important;}
+
+ =
+   /* tmpl-11 preview */
+
+    .rnb-social-align{float:right!important;}=
+
+
+    /* Ul Li outlook extra spacing fix */
+
+    li{mso-margin-top-=
+alt: 0; mso-margin-bottom-alt: 0;}
+
+    /* Outlook fix */
+
+    tabl=
+e {mso-table-lspace:0pt; mso-table-rspace:0pt;}
+
+    /* Outlook fix */=
+
+
+    table, tr, td {border-collapse: collapse;}
+
+    /* Outlook fi=
+x */
+
+    p,a,li,blockquote {mso-line-height-rule:exactly;}
+
+    /*=
+ Outlook fix */
+
+    .msib-right-img { mso-padding-alt: 0 !important;}=
+
+
+    @media  only screen and (min-width:590px){
+
+    /* mac fix wi=
+dth */
+
+    .templateContainer{width:590px !important;}
+
+    }
+=
+
+    @media  screen and (max-width: 360px){
+
+    /* yahoo app fix wid=
+th "tmpl-2 tmpl-10 tmpl-13" in android devices */
+
+    .rnb-yahoo-width=
+{ width:360px !important;}
+
+    }
+
+    @media  screen and (max-widt=
+h: 380px){
+
+    /* fix width and font size "tmpl-4 tmpl-6" in mobile pr=
+eview */
+
+    .element-img-text{ font-size:24px !important;}
+
+    .=
+element-img-text2{ width:230px !important;}
+
+    .content-img-text-tmpl=
+-6{ font-size:24px !important;}
+
+    .content-img-text2-tmpl-6{ width:2=
+20px !important;}
+
+    }
+
+    @media  screen and (max-width: 480px)=
+ {
+
+    td[class=3D"rnb-container-padding"] {
+
+    padding-left: 10=
+px !important;
+
+    padding-right: 10px !important;
+
+    }
+
+   =
+ /* force container nav to (horizontal) blocks */
+
+    td.rnb-force-nav=
+ {
+
+    display: inherit;
+
+    }
+
+    /* fix text alignment "tm=
+pl-11" in mobile preview */
+
+    .rnb-social-text-left {
+
+    width=
+: 100%;
+
+    text-align: center;
+
+    margin-bottom: 15px;
+
+   =
+ }
+
+    .rnb-social-text-right {
+
+    width: 100%;
+
+    text-al=
+ign: center;
+
+    }
+
+    }
+
+    @media  only screen and (max-wi=
+dth: 600px) {
+
+    /* center the address & social icons */
+
+    .rn=
+b-text-center {text-align:center !important;}
+
+    /* force container c=
+olumns to (horizontal) blocks */
+
+    th.rnb-force-col {
+
+    displ=
+ay: block;
+
+    padding-right: 0 !important;
+
+    padding-left: 0 !=
+important;
+
+    width:100%;
+
+    }
+
+    table.rnb-container {=
+
+
+    width: 100% !important;
+
+    }
+
+    table.rnb-btn-col-con=
+tent {
+
+    width: 100% !important;
+
+    }
+
+    table.rnb-col-3=
+ {
+
+    /* unset table align=3D"left/right" */
+
+    float: none !im=
+portant;
+
+    width: 100% !important;
+
+    /* change left/right pad=
+ding and margins to top/bottom ones */
+
+    margin-bottom: 10px;
+
+ =
+   padding-bottom: 10px;
+
+    /*border-bottom: 1px solid #eee;*/
+
+ =
+   }
+
+    table.rnb-last-col-3 {
+
+    /* unset table align=3D"left/=
+right" */
+
+    float: none !important;
+
+    width: 100% !important;=
+
+
+    }
+
+    table.rnb-col-2 {
+
+    /* unset table align=3D"lef=
+t/right" */
+
+    float: none !important;
+
+    width: 100% !importan=
+t;
+
+    /* change left/right padding and margins to top/bottom ones */=
+
+
+    margin-bottom: 10px;
+
+    padding-bottom: 10px;
+
+    /*bo=
+rder-bottom: 1px solid #eee;*/
+
+    }
+
+    table.rnb-col-2-noborder=
+-onright {
+
+    /* unset table align=3D"left/right" */
+
+    float: =
+none !important;
+
+    width: 100% !important;
+
+    /* change left/r=
+ight padding and margins to top/bottom ones */
+
+    margin-bottom: 10px=
+;
+
+    padding-bottom: 10px;
+
+    }
+
+    table.rnb-col-2-nobord=
+er-onleft {
+
+    /* unset table align=3D"left/right" */
+
+    float:=
+ none !important;
+
+    width: 100% !important;
+
+    /* change left/=
+right padding and margins to top/bottom ones */
+
+    margin-top: 10px;=
+
+
+    padding-top: 10px;
+
+    }
+
+    table.rnb-last-col-2 {
+=
+
+    /* unset table align=3D"left/right" */
+
+    float: none !importa=
+nt;
+
+    width: 100% !important;
+
+    }
+
+    table.rnb-col-1 {=
+
+
+    /* unset table align=3D"left/right" */
+
+    float: none !impo=
+rtant;
+
+    width: 100% !important;
+
+    }
+
+    img.rnb-col-3-i=
+mg {
+
+    /**max-width:none !important;**/
+
+    width:100% !importa=
+nt;
+
+    }
+
+    img.rnb-col-2-img {
+
+    /**max-width:none !imp=
+ortant;**/
+
+    width:100% !important;
+
+    }
+
+    img.rnb-col-=
+2-img-side-xs {
+
+    /**max-width:none !important;**/
+
+    width:10=
+0% !important;
+
+    }
+
+    img.rnb-col-2-img-side-xl {
+
+    /**=
+max-width:none !important;**/
+
+    width:100% !important;
+
+    }
+=
+
+    img.rnb-col-1-img {
+
+    /**max-width:none !important;**/
+
+ =
+   width:100% !important;
+
+    }
+
+    img.rnb-header-img {
+
+   =
+ /**max-width:none !important;**/
+
+    width:100% !important;
+
+    =
+margin:0 auto;
+
+    }
+
+    img.rnb-logo-img {
+
+    /**max-width=
+:none !important;**/
+
+    width:100% !important;
+
+    }
+
+    td=
+.rnb-mbl-float-none {
+
+    float:inherit !important;
+
+    }
+
+  =
+  .img-block-center{text-align:center !important;}
+
+    .logo-img-cente=
+r
+
+    {
+
+    float:inherit !important;
+
+    }
+
+    /* tmpl=
+-11 preview */
+
+    .rnb-social-align{margin:0 auto !important; float:i=
+nherit !important;}
+
+    /* tmpl-11 preview */
+
+    .rnb-social-cen=
+ter{display:inline-block;}
+
+    /* tmpl-11 preview */
+
+    .social-=
+text-spacing{margin-bottom:0px !important; padding-bottom:0px !important;}=
+
+
+    /* tmpl-11 preview */
+
+    .social-text-spacing2{padding-top:=
+15px !important;}
+
+    /* UL bullet fixed in outlook */
+
+    ul {ms=
+o-special-format:bullet;}
+
+    }</style><!--[if gte mso 11]><style type=
+=3D"text/css">table{border-spacing: 0; }table td {border-collapse: separate=
+;}</style><![endif]--><!--[if !mso]><!--><style type=3D"text/css">table{bor=
+der-spacing: 0;} table td {border-collapse: collapse;}</style> <!--<![endif=
+]--><!--[if gte mso 15]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:Pixe=
+lsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]-->=
+<!--[if gte mso 9]><xml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPer=
+Inch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml><![endif]--></hea=
+d><body>
+
+   =20
+
+    <table border=3D"0" align=3D"center" width=3D"1=
+00%" cellpadding=3D"0" cellspacing=3D"0" class=3D"main-template" bgcolor=3D=
+"#f9fafc" style=3D"background-color: rgb(249, 250, 252);">
+
+   =20
+
+ =
+       <tbody><tr>
+
+            <td align=3D"center" valign=3D"top">
+=
+
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+width=3D"590" class=3D"templateContainer" style=3D"max-width:590px!importan=
+t; width: 590px;">
+
+            <tbody><tr>
+
+   =20
+
+            =
+<td align=3D"center" valign=3D"top">
+
+   =20
+
+                <table =
+class=3D"rnb-del-min-width" width=3D"100%" cellpadding=3D"0" border=3D"0" c=
+ellspacing=3D"0" style=3D"min-width:590px;" name=3D"Layout_0" id=3D"Layout_=
+0">
+
+                    <tbody><tr>
+
+                        <td c=
+lass=3D"rnb-del-min-width" valign=3D"top" align=3D"center" style=3D"min-wid=
+th:590px;">
+
+                            <a href=3D"#" name=3D"Layout_0=
+"></a>
+
+                            <table width=3D"100%" cellpadding=
+=3D"0" border=3D"0" height=3D"38" cellspacing=3D"0">
+
+                 =
+               <tbody><tr>
+
+                                    <td val=
+ign=3D"top" height=3D"38">
+
+                                        <im=
+g width=3D"20" height=3D"38" style=3D"display:block; max-height:38px; max-w=
+idth:20px;" alt=3D"" src=3D"https://img.mailinblue.com/3994151/images/rnb/o=
+riginal/61246ae5d964a1288e5d3b09.png">
+
+                               =
+     </td>
+
+                                </tr>
+
+                =
+            </tbody></table>
+
+                        </td>
+
+      =
+              </tr>
+
+                </tbody></table>
+
+            =
+    </td>
+
+        </tr><tr>
+
+   =20
+
+            <td align=3D"ce=
+nter" valign=3D"top">
+
+   =20
+
+                <div style=3D"backgrou=
+nd-color: rgb(11, 45, 37); border-radius: 0px;">
+
+                    <=
+table class=3D"rnb-del-min-width" width=3D"100%" cellpadding=3D"0" border=
+=3D"0" cellspacing=3D"0" style=3D"min-width:590px;" name=3D"Layout_1" id=3D=
+"Layout_1">
+
+                    <tbody><tr>
+
+                     =
+   <td class=3D"rnb-del-min-width" align=3D"center" valign=3D"top" style=3D=
+"min-width:590px;">
+
+                            <a href=3D"#" name=3D"=
+Layout_1"></a>
+
+                            <table width=3D"100%" borde=
+r=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=
+=3D"#0b2d25" style=3D"background-color: rgb(11, 45, 37); border-radius: 0px=
+; padding-left: 20px; padding-right: 20px; border-collapse: separate;">
+=
+
+                                <tbody><tr>
+
+                       =
+             <td height=3D"20" style=3D"font-size:1px; line-height:20px; ms=
+o-hide: all;">=C2=A0</td>
+
+                                </tr>
+
+ =
+                               <tr>
+
+                                  =
+  <td valign=3D"top" class=3D"rnb-container-padding" align=3D"left">
+
+ =
+                                       <table width=3D"100%" cellpadding=3D=
+"0" border=3D"0" align=3D"center" cellspacing=3D"0">
+
+                 =
+                           <tbody><tr>
+
+                               =
+                 <td valign=3D"top" align=3D"center">
+
+                =
+                                    <table cellpadding=3D"0" border=3D"0" a=
+lign=3D"center" cellspacing=3D"0" class=3D"logo-img-center">=20
+
+        =
+                                                <tbody><tr>
+
+          =
+                                                  <td valign=3D"middle" ali=
+gn=3D"center" style=3D"line-height: 1px;">
+
+                           =
+                                     <div style=3D"border-top:0px None #000=
+;border-right:0px None #000;border-bottom:0px None #000;border-left:0px Non=
+e #000;display:inline-block; " cellspacing=3D"0" cellpadding=3D"0" border=
+=3D"0"><div><img width=3D"300" vspace=3D"0" hspace=3D"0" border=3D"0" alt=
+=3D"admall" style=3D"float: left;max-width:300px;display:block;" class=3D"r=
+nb-logo-img" src=3D"https://img.mailinblue.com/3994151/images/rnb/original/=
+61246ae5d964a1288e5d3b09.png"></div></div></td>
+
+                      =
+                                  </tr>
+
+                              =
+                      </tbody></table>
+
+                               =
+                     </td>
+
+                                           =
+ </tr>
+
+                                        </tbody></table></td>=
+
+
+                                </tr>
+
+                          =
+      <tr>
+
+                                    <td height=3D"20" style=
+=3D"font-size:1px; line-height:20px; mso-hide: all;">=C2=A0</td>
+
+     =
+                           </tr>
+
+                            </tbody><=
+/table>
+
+                        </td>
+
+                    </tr>=
+
+
+                </tbody></table>
+
+              =20
+
+          =
+  </div></td>
+
+        </tr><tr>
+
+   =20
+
+            <td align=
+=3D"center" valign=3D"top">
+
+   =20
+
+                <div style=3D"ba=
+ckground-color: rgb(255, 255, 255); border-radius: 0px;">
+
+            =
+        <table class=3D"rnb-del-min-width" width=3D"100%" cellpadding=3D"0"=
+ border=3D"0" cellspacing=3D"0" style=3D"min-width:100%;" name=3D"Layout_8"=
+>
+
+                    <tbody><tr>
+
+                        <td cla=
+ss=3D"rnb-del-min-width" align=3D"center" valign=3D"top">
+
+            =
+                <a href=3D"#" name=3D"Layout_8"></a>
+
+                 =
+           <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=3D"background-colo=
+r: rgb(255, 255, 255); padding-left: 20px; padding-right: 20px; border-coll=
+apse: separate; border-radius: 0px; border-bottom: 0px none rgb(200, 200, 2=
+00);">
+
+   =20
+
+                                            <tbody><t=
+r>
+
+                                                <td height=3D"20" s=
+tyle=3D"font-size:1px; line-height:20px; mso-hide: all;">=C2=A0</td>
+
+ =
+                                           </tr>
+
+                     =
+                       <tr>
+
+                                          =
+      <td valign=3D"top" class=3D"rnb-container-padding" align=3D"left">
+=
+
+   =20
+
+                                                    <table wid=
+th=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-c=
+olumns-container">
+
+                                                   =
+     <tbody><tr>
+
+                                                     =
+       <th class=3D"rnb-force-col" style=3D"text-align: left; font-weight: =
+normal; padding-right: 0px;" valign=3D"top">
+
+   =20
+
+               =
+                                                 <table border=3D"0" valign=
+=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"left" =
+class=3D"rnb-col-1">
+
+   =20
+
+                                       =
+                             <tbody><tr>
+
+                             =
+                                           <td style=3D"font-size:14px; fon=
+t-family:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div>
+=
+
+    <div style=3D"text-align: justify;"><span style=3D"font-size:16px;">=
+Xin ch=C3=A0o kh=C3=A1ch h=C3=A0ng: <b>Tien Van Pham</b></span></div>
+
+=
+        <div style=3D"text-align: justify;"><span style=3D"font-size:16px;"=
+>Qu=C3=BD kh=C3=A1ch =C4=91ang c=C3=B3 =C4=91=C6=A1n h=C3=A0ng s=E1=BB=
+=91 <b>#009453</b>=C4=91=C6=B0=E1=BB=A3c t=E1=BA=A1o v=C3=A0o ng=C3=A0y 09-=
+11-2022 =C4=91ang =E1=BB=9F tr=E1=BA=A1ng th=C3=A1i ch=C6=B0a thanh to=
+=C3=A1n. </span></div>
+
+   =20
+
+    <div style=3D"text-align: justify=
+;"><span style=3D"font-size:16px;">Qu=C3=BD kh=C3=A1ch c=C3=B3 th=E1=BB=
+=83 thanh to=C3=A1n t=E1=BB=AB b=C3=A2y gi=E1=BB=9D. N=E1=BA=BFu qu=C3=
+=BD kh=C3=A1ch =C4=91=C3=A3 =C4=91=E1=BA=B7t mua h=C3=A0ng v=C3=A0 =C4=
+=91=C3=A2y l=C3=A0 =C4=91=C6=A1n h=C3=A0ng gia h=E1=BA=A1n th=C3=AC vi=
+=E1=BB=87c thanh to=C3=A1n tr=C6=B0=E1=BB=9Bc ng=C3=A0y =C4=91=E1=BA=BFn h=
+=E1=BA=A1n thanh to=C3=A1n l=C3=A0 12/11/2022 s=E1=BA=BD gi=C3=BAp qu=C3=
+=BD kh=C3=A1ch tr=C3=A1nh b=E1=BB=8B l=E1=BB=A1 h=E1=BA=A1n thanh to=C3=
+=A1n. </span></div>
+
+   =20
+
+    <div style=3D"text-align: justify;">=
+<span style=3D"font-size:16px;">=C2=A0</span></div>
+
+   =20
+
+    <div=
+ style=3D"text-align: justify;"><span style=3D"font-size:16px;">H=C3=ACnh t=
+h=E1=BB=A9c thanh to=C3=A1n c=E1=BB=A7a qu=C3=BD kh=C3=A1ch l=C3=A0: Chuy=
+=E1=BB=83n kho=E1=BA=A3n ng=C3=A2n h=C3=A0ng.
+
+     </span></div>
+
+=
+   =20
+
+    <div style=3D"text-align: justify;"><span style=3D"font-size:=
+16px;">=C2=A0</span></div>
+
+   =20
+
+    <div style=3D"text-align: jus=
+tify;"><span style=3D"font-size:16px;">T=E1=BB=95ng ti=E1=BB=81n ph=
+=E1=BA=A3i thanh to=C3=A1n: <b>200.100</b></span></div>
+
+   =20
+
+    =
+<div style=3D"text-align: justify;"><span style=3D"font-size:16px;">=C2=
+=A0</span></div>
+
+        <div style=3D"text-align: justify;"><span sty=
+le=3D"font-size:16px;">Ng=C3=A0y =C4=91=E1=BA=BFn h=E1=BA=A1n thanh to=
+=C3=A1n: 12/11/2022</span></div>
+
+        <div style=3D"text-align: jus=
+tify;"><span style=3D"font-size:16px;">Xem ho=C3=A1 =C4=91=C6=A1n =C4=91=
+=C6=B0=E1=BB=A3c =C4=91=C3=ADnh k=C3=A8m theo email n=C3=A0y: <a href=3D"ht=
+tps://unimall.vn/vi/user/in-pdf.html?data_id=3D34" download>Xem chi ti=
+=E1=BA=BFt</a></span></div>
+
+   =20
+
+</div>
+
+    </td>
+
+ =20
+=
+
+                                                                    </tr=
+>
+
+                                                                    =
+
+
+                                                                    <=
+/tbody></table>
+
+   =20
+
+                                            =
+                    </th></tr>
+
+                                       =
+             </tbody></table></td>
+
+                                   =
+         </tr>
+
+                                            <tr>
+
+ =
+                                               <td height=3D"0" style=3D"fo=
+nt-size:1px; line-height:0px; mso-hide: all;">=C2=A0</td>
+
+            =
+                                </tr>
+
+                                =
+        </tbody></table>
+
+                        </td>
+
+          =
+          </tr>
+
+                </tbody></table>
+
+                =
+</div></td>
+
+        </tr>
+
+                <tr>
+
+            <=
+td align=3D"center" valign=3D"top">
+
+   =20
+
+                <div sty=
+le=3D"background-color: rgb(255, 255, 255); border-radius: 0px;">
+
+    =
+             =20
+
+                    <table width=3D"100%" cellpadding=
+=3D"0" border=3D"0" cellspacing=3D"0" name=3D"Layout_2" id=3D"Layout_2"><tb=
+ody><tr>
+
+                        <td align=3D"center" valign=3D"top"><=
+a href=3D"#" name=3D"Layout_2"></a>
+
+                            <table=
+ border=3D"0" width=3D"100%" cellpadding=3D"0" cellspacing=3D"0" class=3D"r=
+nb-container" bgcolor=3D"#ffffff" style=3D"height: 0px; background-color: r=
+gb(255, 255, 255); border-radius: 0px; border-collapse: separate; padding-l=
+eft: 20px; padding-right: 20px;"><tbody><tr>
+
+                         =
+           <td class=3D"rnb-container-padding" style=3D"font-size: px;font-=
+family: ; color: ;">
+
+   =20
+
+                                       =
+ <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-colum=
+ns-container" align=3D"left" style=3D"margin:auto;">
+
+                 =
+                           <tbody><tr>
+
+   =20
+
+                     =
+                           <th class=3D"rnb-force-col" align=3D"left" style=
+=3D"text-align: center; font-weight: normal">
+
+   =20
+
+              =
+                                      <table border=3D"0" cellspacing=3D"0"=
+ cellpadding=3D"0" align=3D"center" class=3D"rnb-col-1">
+
+   =20
+
+   =
+                                                     <tbody><tr>
+
+     =
+                                                       <td height=3D"10"></=
+td>
+
+                                                        </tr>
+=
+
+   =20
+
+                                                        <tr>=
+
+
+                                                            <td style=
+=3D"font-family:Arial,Helvetica,sans-serif; color:#3c4858; text-align:left;=
+">
+
+   =20
+
+                                                         =
+       <span style=3D"color:#3c4858;"><span style=3D"font-size:20px;"><stro=
+ng>H=C6=B0=E1=BB=9Bng d=E1=BA=ABn thanh to=C3=A1n</strong></span></span>
+=
+
+                                                            </td>
+
+ =
+                                                       </tr>
+
+         =
+                                               <tr>
+
+                  =
+                                          <td height=3D"10"></td>
+
+    =
+                                                    </tr>
+
+            =
+                                            </tbody></table>
+
+         =
+                                           </th></tr>
+
+                =
+                        </tbody></table></td>
+
+                        =
+        </tr>
+
+   =20
+
+                            </tbody></table>=
+
+
+   =20
+
+                        </td>
+
+                    </tr=
+>
+
+   =20
+
+                </tbody></table>
+
+            </div></=
+td>
+
+        </tr>
+
+        <tr>
+
+            <td align=3D"cent=
+er" valign=3D"top">
+
+   =20
+
+                <div style=3D"background=
+-color: rgb(255, 255, 255); border-radius: 0px;">
+
+                    =
+<table class=3D"rnb-del-min-width" width=3D"100%" cellpadding=3D"0" border=
+=3D"0" cellspacing=3D"0" style=3D"min-width:100%;" name=3D"Layout_9">
+
+=
+                    <tbody><tr>
+
+                        <td class=3D"r=
+nb-del-min-width" align=3D"center" valign=3D"top">
+
+                   =
+         <a href=3D"#" name=3D"Layout_9"></a>
+
+                        =
+    <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" =
+class=3D"rnb-container" bgcolor=3D"#ffffff" style=3D"background-color: rgb(=
+255, 255, 255); padding-left: 20px; padding-right: 20px; border-collapse: s=
+eparate; border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);">=
+
+
+   =20
+
+                                            <tbody><tr>
+=
+
+                                                <td height=3D"0" style=
+=3D"font-size:1px; line-height:0px; mso-hide: all;">=C2=A0</td>
+
+      =
+                                      </tr>
+
+                          =
+                  <tr>
+
+                                               =
+ <td valign=3D"top" class=3D"rnb-container-padding" align=3D"left">
+
+  =
+ =20
+
+                                                    <table width=3D=
+"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-column=
+s-container">
+
+                                                        =
+<tbody><tr>
+
+                                                          =
+  <th class=3D"rnb-force-col" style=3D"text-align: left; font-weight: norma=
+l; padding-right: 0px;" valign=3D"top">
+
+   =20
+
+                    =
+                                            <table border=3D"0" valign=3D"t=
+op" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"left" class=
+=3D"rnb-col-1">
+
+   =20
+
+                                            =
+                        <tbody><tr>
+
+                                  =
+                                      <td style=3D"font-size:14px; font-fam=
+ily:Arial,Helvetica,sans-serif, sans-serif; color:#3c4858;"><div><span styl=
+e=3D"font-size:16px;">Qu=C3=BD kh=C3=A1ch chuy=E1=BB=83n kho=E1=BA=A3n s=
+=E1=BB=91 ti=E1=BB=81n <b>200.100</b>v=C3=A0o m=E1=BB=99t trong c=C3=A1c t=
+=C3=A0i kho=E1=BA=A3n ng=C3=A2n h=C3=A0ng c=E1=BB=A7a UniMall: </span></div=
+></td>
+
+                                                               =
+     </tr>
+
+                                                           =
+         </tbody></table>
+
+   =20
+
+                                  =
+                              </th></tr>
+
+                             =
+                       </tbody></table></td>
+
+                         =
+                   </tr>
+
+                                            <=
+tr>
+
+                                                <td height=3D"20" =
+style=3D"font-size:1px; line-height:20px; mso-hide: all;">=C2=A0</td>
+
+=
+                                            </tr>
+
+                    =
+                    </tbody></table>
+
+                        </td>
+=
+
+                    </tr>
+
+                </tbody></table>
+
+   =
+             </div></td>
+
+        </tr><tr>
+
+   =20
+
+            =
+<td align=3D"center" valign=3D"top">
+
+   =20
+
+                <div st=
+yle=3D"background-color: rgb(255, 255, 255); border-radius: 0px;">
+
+   =
+                 <table width=3D"100%" cellpadding=3D"0" border=3D"0" cells=
+pacing=3D"0" name=3D"Layout_10" id=3D"Layout_10"><tbody><tr>
+
+         =
+               <td align=3D"center" valign=3D"top"><a href=3D"#" name=3D"La=
+yout_10"></a>
+
+                            <table border=3D"0" width=3D=
+"100%" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=
+=3D"#ffffff" style=3D"height: 0px; background-color: rgb(255, 255, 255); bo=
+rder-radius: 0px; border-collapse: separate; padding-left: 20px; padding-ri=
+ght: 20px;"><tbody>
+
+                                <tr>
+
+        =
+                            <td class=3D"rnb-container-padding" style=3D"fo=
+nt-size: px;font-family: ; color: ;">
+
+   =20
+
+                      =
+                  <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" c=
+lass=3D"rnb-columns-container" align=3D"left" style=3D"margin:auto;">
+
+=
+                                            <tbody>
+
+                  =
+                              <tr>
+
+   =20
+
+                         =
+                           <th class=3D"rnb-force-col" align=3D"left" style=
+=3D"text-align: center; font-weight: normal">
+
+                        =
+                                <table border=3D"0" cellspacing=3D"0" cellp=
+adding=3D"0" align=3D"center" class=3D"rnb-col-1">
+
+                   =
+                                         <tbody>
+
+                     =
+                                           <tr>
+
+                      =
+                                              <td height=3D"10"></td>
+
+=
+                                                                </tr>
+
+=
+           =20
+
+                                                         =
+       <tr>
+
+                                                          =
+          <td style=3D"font-family:Arial,Helvetica,sans-serif; color:#3c485=
+8; text-align:left;">
+
+                                                =
+                        <span style=3D"color:#3c4858;"><span style=3D"font-=
+size:20px;"><strong>Ng=C3=A2n h=C3=A0ng Th=C6=B0=C6=A1ng M=E1=BA=A1i =C3=
+=81 Ch=C3=A2u (ACB)</strong></span></span>
+
+                           =
+                                         </td>
+
+                       =
+                                         </tr>
+
+                       =
+                                         <tr>
+
+                        =
+                                            <td height=3D"10"></td>
+
+  =
+                                                              </tr>
+
+  =
+                                                          </tbody>
+
+   =
+                                                     </table>
+
+        =
+                                            </th>
+
+                    =
+                            </tr>
+
+                                    =
+        </tbody>
+
+                                        </table>
+=
+
+                                    </td>
+
+                         =
+       </tr>
+
+                            </tbody>
+
+               =
+         </table>
+
+   =20
+
+                        </td>
+
+       =
+             </tr>
+
+   =20
+
+                </tbody>
+
+           =
+ </table>
+
+            </div>
+
+        </td>
+
+        </tr><tr>=
+
+
+   =20
+
+            <td align=3D"center" valign=3D"top">
+
+    =
+
+
+                <div style=3D"background-color: rgb(255, 255, 255); b=
+order-radius: 0px;">
+
+                    <table class=3D"rnb-del-min-w=
+idth" width=3D"100%" cellpadding=3D"0" border=3D"0" cellspacing=3D"0" style=
+=3D"min-width:100%;" name=3D"Layout_11">
+
+                    <tbody><t=
+r>
+
+                        <td class=3D"rnb-del-min-width" align=3D"ce=
+nter" valign=3D"top">
+
+                            <a href=3D"#" name=
+=3D"Layout_11"></a>
+
+                            <table width=3D"100%" =
+border=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-container" bg=
+color=3D"#ffffff" style=3D"background-color: rgb(255, 255, 255); padding-le=
+ft: 20px; padding-right: 20px; border-collapse: separate; border-radius: 0p=
+x; border-bottom: 0px none rgb(200, 200, 200);">
+
+   =20
+
+           =
+                     <tbody>
+
+                                    <tr>=
+
+
+                                        <td height=3D"0" style=3D"fon=
+t-size:1px; line-height:0px; mso-hide: all;">=C2=A0</td>
+
+             =
+                       </tr>
+
+                                    <tr>=
+
+
+                                        <td valign=3D"top" class=3D"r=
+nb-container-padding" align=3D"left">
+
+                                =
+            <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacin=
+g=3D"0" class=3D"rnb-columns-container">
+
+                             =
+                   <tbody><tr>
+
+                                       =
+             <th class=3D"rnb-force-col" style=3D"text-align: left; font-we=
+ight: normal; padding-right: 0px;" valign=3D"top">
+
+                   =
+                                     <table border=3D"0" valign=3D"top" cel=
+lspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D"left" class=3D"rnb=
+-col-1">
+
+                                                            <=
+tbody>
+
+                                                               =
+ <tr>
+
+                                                                =
+    <td style=3D"font-size:14px; font-family:Arial,Helvetica,sans-serif, sa=
+ns-serif; color:#3c4858;">
+
+                                           =
+                             <div>
+
+                                   =
+                                         <div style=3D"text-align: justify;=
+"><strong><span style=3D"font-size:16px;">Chinh Nh=C3=A1nh: Th=E1=BB=A7y Ng=
+uy=C3=AAn =E2=80=93 H=E1=BA=A3i Ph=C3=B2ng</span></strong></div>
+
+     =
+                                                                      =20
+=
+
+                                                                        =
+    <div style=3D"text-align: justify;"><span style=3D"font-size:16px;"><st=
+rong>S=E1=BB=91 t=C3=A0i Kho=E1=BA=A3n:</strong> 888 666 888 68</span></div=
+>
+
+                                                                    =
+       =20
+
+                                                             =
+               <div style=3D"text-align: justify;"><span style=3D"font-size=
+:16px;"><strong>Ch=E1=BB=A7 T=C3=A0i Kho=E1=BA=A3n</strong>: V=C5=A8 M=
+=E1=BA=A0NH =C4=90I=E1=BB=80U</span></div>
+
+                           =
+                                                =20
+
+                    =
+                                                        <div style=3D"text-=
+align: justify;">=C2=A0</div>
+
+                                        =
+                                   =20
+
+                                 =
+                                           <div style=3D"text-align: justif=
+y;">=C2=A0</div>
+
+                                                     =
+                      =20
+
+                                              =
+                              <div style=3D"text-align: justify;"><span sty=
+le=3D"font-size:16px;">N=E1=BB=99i dung chuy=E1=BB=83n kho=E1=BA=A3n qu=
+=C3=BD kh=C3=A1ch vui l=C3=B2ng nh=E1=BA=ADp #009453 v=C3=A0o n=E1=BB=99i d=
+ung thanh to=C3=A1n =C4=91=E1=BB=83 h=E1=BB=87 th=E1=BB=91ng t=E1=BB=B1 =
+=C4=91=E1=BB=99ng k=C3=ADch ho=E1=BA=A1t l=C6=B0u gi=E1=BB=AF =C4=91=C6=
+=A1n h=C3=A0ng c=E1=BB=A7a b=E1=BA=A1n ngay khi UniMall nh=E1=BA=ADn =C4=
+=91=C6=B0=E1=BB=A3c thanh to=C3=A1n.</span></div>
+
+                    =
+                                                       =20
+
+             =
+                                                               <div style=
+=3D"text-align: justify;">=C2=A0</div>
+
+                               =
+                                            =20
+
+                        =
+                                                    <div style=3D"text-alig=
+n: justify;"><span style=3D"font-size:16px;">M=E1=BB=8Di th=E1=BA=AFc m=
+=E1=BA=AFc vui l=C3=B2ng li=C3=AAn h=E1=BB=87 v=E1=BB=9Bi UniMall qua Hotli=
+ne: 0356 105 899 ho=E1=BA=B7c email hotro@unimall.vn =C4=91=E1=BB=83 =C4=
+=91=C6=B0=E1=BB=A3c h=E1=BB=97 tr=E1=BB=A3 t=E1=BB=91t nh=E1=BA=A5t..</span=
+></div>
+
+                                                              =
+          </div>
+
+                                                     =
+               </td>
+
+                                                 =
+               </tr>
+
+                                                 =
+           </tbody>
+
+                                                  =
+      </table>
+
+                                                       =
+ </th>
+
+                                                    </tr>
+
+=
+                                                </tbody>
+
+             =
+                               </table>
+
+                              =
+          </td>
+
+                                    </tr>
+
+       =
+                             <tr>
+
+                                    =
+    <td height=3D"20" style=3D"font-size:1px; line-height:20px; mso-hide: a=
+ll;">=C2=A0</td>
+
+                                    </tr>
+
+      =
+                          </tbody>
+
+                            </table=
+>
+
+                        </td>
+
+                    </tr>
+
+  =
+              </tbody>
+
+            </table>
+
+                </div=
+>
+
+            </td>
+
+        </tr>
+
+                <tr>
+
+=
+            <td align=3D"center" valign=3D"top">
+
+                <div =
+style=3D"background-color: rgb(255, 255, 255); border-radius: 0px;">
+
+ =
+                   <table class=3D"rnb-del-min-width" width=3D"100%" cellpa=
+dding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"min-width:100%;" name=
+=3D"Layout_11">
+
+                    <tbody><tr>
+
+                 =
+       <td class=3D"rnb-del-min-width" align=3D"center" valign=3D"top">
+=
+
+                            <a href=3D"#" name=3D"Layout_11"></a>
+
+ =
+                           <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"background-color: rgb(255, 255, 255); padding-left: 20px; padding-right=
+: 20px; border-collapse: separate; border-radius: 0px; border-bottom: 0px n=
+one rgb(200, 200, 200);">
+
+   =20
+
+                                  =
+          <tbody><tr>
+
+                                                =
+<td height=3D"0" style=3D"font-size:1px; line-height:0px; mso-hide: all;">=
+=C2=A0</td>
+
+                                            </tr>
+
+   =
+                                         <tr>
+
+                        =
+                        <td valign=3D"top" class=3D"rnb-container-padding" =
+align=3D"left">
+
+   =20
+
+                                            =
+        <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=3D=
+"0" class=3D"rnb-columns-container">
+
+                                 =
+                       <tbody><tr>
+
+                                   =
+                         <th class=3D"rnb-force-col" style=3D"text-align: l=
+eft; font-weight: normal; padding-right: 0px;" valign=3D"top">
+
+   =20
+=
+
+                                                                <table b=
+order=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100=
+%" align=3D"left" class=3D"rnb-col-1">
+
+   =20
+
+                     =
+                                               <tbody><tr>
+
+           =
+                                                             <td style=3D"f=
+ont-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif; color:#3=
+c4858;"><div>
+
+                                                        =
+                    <div style=3D"text-align: justify;"><span style=3D"font=
+-size:16px;">Qu=C3=BD kh=C3=A1ch =C4=91=C3=A3 l=C3=A0 th=C3=A0nh vi=C3=
+=AAn c=E1=BB=A7a Spice Club ch=C6=B0a? V=E1=BB=9Bi 50K ra nh=E1=BA=ADp th=
+=C3=A0nh vi=C3=AAn Spice Club ,  Qu=C3=BD kh=C3=A1ch s=E1=BA=BD =C4=91=
+=C6=B0=E1=BB=A3c h=C6=B0=E1=BB=9Fng =C4=91=E1=BA=B7c quy=E1=BB=81n 5% khuy=
+=E1=BB=85n m=C3=A3i d=C3=B9ng tr=E1=BB=8Dn =C4=91=E1=BB=9Di v=C3=A0 nhi=
+=E1=BB=81u =C6=B0u =C4=91=C3=A3i =C4=91=E1=BA=B7c bi=E1=BB=87t kh=C3=A1c. <=
+/span></div>
+
+                                                         =
+                   <div style=3D"text-align: justify;"><span style=3D"font-=
+size:16px;">=C2=A0</span></div>
+
+                                      =
+                                   </td>
+
+                             =
+                                       </tr>
+
+                         =
+                                           </tbody></table>
+
+   =20
+
+=
+                                                                </th></tr>=
+
+
+                                                    </tbody></table><=
+/td>
+
+                                            </tr>
+
+          =
+                                  <tr>
+
+                               =
+                 <td height=3D"20" style=3D"font-size:1px; line-height:20px=
+; mso-hide: all;">=C2=A0</td>
+
+                                        =
+    </tr>
+
+                                            <tr>
+
+      =
+                                          <td valign=3D"top" class=3D"rnb-c=
+ontainer-padding" align=3D"left">
+
+                                    =
+                <div style=3D"text-align: justify;"><span style=3D"font-siz=
+e:16px;">=C2=A0</span></div>
+
+                                         =
+           <table width=3D"100%" border=3D"0" cellpadding=3D"0" cellspacing=
+=3D"0" class=3D"rnb-columns-container">
+
+                              =
+                          <tbody>
+
+                                    =
+                        <tr>
+
+                                         =
+                       <th class=3D"rnb-force-col" valign=3D"top">
+
+   =
+                                                                 <table cel=
+lpadding=3D"0" border=3D"0" align=3D"center" cellspacing=3D"0" class=3D"rnb=
+-btn-col-content" style=3D"margin:auto; border-collapse: separate;">
+
+ =
+                                                                       <tbo=
+dy><tr>
+
+                                                              =
+              <td width=3D"auto" valign=3D"middle" bgcolor=3D"#ea7236" alig=
+n=3D"center" height=3D"40" style=3D"font-size:18px; font-family:Arial,Helve=
+tica,sans-serif; color:#ffffff; font-weight:normal; padding-left:20px; padd=
+ing-right:20px; vertical-align: middle; background-color:#ea7236;border-rad=
+ius:4px;border-top:0px None #000;border-right:0px None #000;border-bottom:0=
+px None #000;border-left:0px None #000;">
+
+                            =
+                                                    <span style=3D"color:#f=
+fffff; font-weight:normal;">
+
+                                         =
+                                               <a style=3D"text-decoration:=
+none; color:#ffffff; font-weight:normal;" target=3D"_blank" href=3D"https:/=
+/unimall.vn/spice-club-register">=C4=90=C4=83ng k=C3=BD th=C3=A0nh vi=C3=
+=AAn Spice Club</a>
+
+                                                  =
+                                  </span>
+
+                            =
+                                                </td>
+
+                =
+                                                        </tr></tbody></tabl=
+e>
+
+                                                                   =
+ <table border=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" wid=
+th=3D"550" align=3D"center" class=3D"rnb-col-1">
+
+                     =
+                                               </table>
+
+              =
+                                                  </th>
+
+              =
+                                              </tr>
+
+                  =
+                                      </tbody>
+
+                       =
+                             </table>
+
+                                =
+                    <div style=3D"text-align: justify;"><span style=3D"font=
+-size:16px;">=C2=A0</span></div>
+
+                                     =
+           </td>
+
+                                            </tr>
+=
+
+                                        </tbody></table>
+
+          =
+              </td>
+
+                    </tr>
+
+                </t=
+body></table>
+
+                </div></td>
+
+        </tr>
+
+    =
+    <tr>
+
+            <td align=3D"center" valign=3D"top">
+
+       =
+         <div style=3D"background-color: rgb(255, 255, 255); border-radius:=
+ 0px;">
+
+                    <table class=3D"rnb-del-min-width" width=
+=3D"100%" cellpadding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"min-wid=
+th:100%;" name=3D"Layout_13">
+
+                    <tbody><tr>
+
+   =
+                     <td class=3D"rnb-del-min-width" align=3D"center" valig=
+n=3D"top">
+
+                            <a href=3D"#" name=3D"Layout_13=
+"></a>
+
+                            <table width=3D"100%" border=3D"0" =
+cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#fff=
+fff" style=3D"background-color: rgb(255, 255, 255); padding-left: 20px; pad=
+ding-right: 20px; border-collapse: separate; border-radius: 0px; border-bot=
+tom: 0px none rgb(200, 200, 200);">
+
+   =20
+
+                        =
+                    <tbody><tr>
+
+                                      =
+          <td height=3D"0" style=3D"font-size:1px; line-height:0px; mso-hid=
+e: all;">=C2=A0</td>
+
+                                            </tr>=
+
+
+                                            <tr>
+
+               =
+                                 <td valign=3D"top" class=3D"rnb-container-=
+padding" align=3D"left">
+
+   =20
+
+                                   =
+                 <table width=3D"100%" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" class=3D"rnb-columns-container">
+
+                        =
+                                <tbody><tr>
+
+                          =
+                                  <th class=3D"rnb-force-col" style=3D"text=
+-align: left; font-weight: normal; padding-right: 0px;" valign=3D"top">
+=
+
+   =20
+
+                                                              =
+  <table border=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" wi=
+dth=3D"100%" align=3D"left" class=3D"rnb-col-1">
+
+   =20
+
+           =
+                                                         <tbody><tr>
+
+ =
+                                                                       <td =
+style=3D"font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif=
+; color:#3c4858;"><div><span style=3D"font-size:16px;"><strong>C=C3=B4ng ty=
+ TNHH Unikery</strong></span></div>
+
+   =20
+
+    <div><span style=3D"=
+font-size:16px;">=C2=A022 Ph=E1=BB=91 M=E1=BB=9Bi, Th=E1=BB=A7y S=C6=A1n, T=
+h=E1=BB=A7y Nguy=C3=AAn, H=E1=BA=A3i Ph=C3=B2ng</span></div>
+
+    </td>=
+
+
+                                                                    <=
+/tr>
+
+                                                                 =
+   </tbody></table>
+
+   =20
+
+                                        =
+                        </th></tr>
+
+                                   =
+                 </tbody></table></td>
+
+                               =
+             </tr>
+
+                                            <tr>
+=
+
+                                                <td height=3D"0" style=
+=3D"font-size:1px; line-height:0px; mso-hide: all;">=C2=A0</td>
+
+      =
+                                      </tr>
+
+                          =
+              </tbody></table>
+
+                        </td>
+
+    =
+                </tr>
+
+                </tbody></table>
+
+          =
+      </div></td>
+
+        </tr><tr>
+
+   =20
+
+            <td ali=
+gn=3D"center" valign=3D"top">
+
+   =20
+
+                <div style=3D"=
+background-color: rgb(249, 250, 252);">
+
+                   =20
+
+    =
+                <table class=3D"rnb-del-min-width rnb-tmpl-width" width=3D"=
+100%" cellpadding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"min-width:5=
+90px;" name=3D"Layout_5" id=3D"Layout_5">
+
+                        <tbo=
+dy><tr>
+
+                            <td class=3D"rnb-del-min-width" al=
+ign=3D"center" valign=3D"top" bgcolor=3D"#f9fafc" style=3D"min-width: 590px=
+; background-color: rgb(249, 250, 252);">
+
+                            =
+    <a href=3D"#" name=3D"Layout_5"></a>
+
+                             =
+   <table width=3D"590" class=3D"rnb-container" cellpadding=3D"0" border=3D=
+"0" align=3D"center" cellspacing=3D"0">
+
+                              =
+      <tbody><tr>
+
+                                        <td height=
+=3D"10" style=3D"font-size:1px; line-height:10px; mso-hide: all;">=C2=A0</t=
+d>
+
+                                    </tr>
+
+                    =
+                <tr>
+
+                                        <td valig=
+n=3D"top" class=3D"rnb-container-padding" style=3D"font-size: 14px; font-fa=
+mily: Arial,Helvetica,sans-serif; color: #888888;" align=3D"left">
+
+   =
+=20
+
+                                            <table width=3D"100%" bo=
+rder=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contain=
+er">
+
+                                                <tbody><tr>
+
+=
+                                                    <th class=3D"rnb-force-=
+col" style=3D"padding-right:20px; padding-left:20px; mso-padding-alt: 0 0 0=
+ 20px; font-weight: normal;" valign=3D"top">
+
+   =20
+
+               =
+                                         <table border=3D"0" valign=3D"top"=
+ cellspacing=3D"0" cellpadding=3D"0" width=3D"264" align=3D"left" class=3D"=
+rnb-col-2 rnb-social-text-left" style=3D"border-bottom:0;">
+
+   =20
+
+=
+                                                            <tbody><tr>
+=
+
+                                                                <td vali=
+gn=3D"top">
+
+                                                          =
+          <table cellpadding=3D"0" border=3D"0" align=3D"left" cellspacing=
+=3D"0" class=3D"rnb-btn-col-content">
+
+                                =
+                                        <tbody><tr>
+
+                  =
+                                                          <td valign=3D"mid=
+dle" align=3D"left" style=3D"font-size:14px; font-family:Arial,Helvetica,sa=
+ns-serif; color:#888888; line-height: 16px" class=3D"rnb-text-center">
+=
+
+                                                                        =
+        <div><div>Hotline: 0356.105.899<br>
+
+    Email: hotro@unimall.v=
+n<br>
+
+    =C2=A0</div>
+
+    </div>
+
+                          =
+                                                  </td></tr>
+
+         =
+                                                           </tbody></table>=
+
+
+                                                                </td>=
+
+
+                                                            </tr>
+=
+
+                                                            </tbody></ta=
+ble>
+
+                                                        </th><th =
+ng-if=3D"item.text.align=3D=3D'left'" class=3D"rnb-force-col rnb-social-wid=
+th" valign=3D"top" style=3D"mso-padding-alt: 0 20px 0 0; padding-right: 15p=
+x;">
+
+   =20
+
+                                                       =
+ <table border=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" wid=
+th=3D"246" align=3D"right" class=3D"rnb-last-col-2">
+
+   =20
+
+       =
+                                                     <tbody>
+
+         =
+                                                                  <tr>
+=
+
+                                                                        =
+      <td valign=3D"middle" class=3D"rnb-text-center" ng-init=3D"width=3Dse=
+tSocialIconsBlockWidth(item)" width=3D"205" align=3D"right">
+
+         =
+                                                                        <di=
+v class=3D"rnb-social-center">
+
+                                       =
+                                             <table align=3D"left" style=3D=
+"float:left; display: inline-block" border=3D"0" cellpadding=3D"0" cellspac=
+ing=3D"0">
+
+                                                           =
+                            <tbody>
+
+                                  =
+                                                        <tr>
+
+         =
+                                                                           =
+         <td style=3D"padding:0px 5px 5px 0px; mso-padding-alt: 0px 2px 5px=
+ 0px;" align=3D"left">
+
+                                               =
+                                                 <span style=3D"color:#ffff=
+ff; font-weight:normal;">
+
+                                            =
+                                                    <a target=3D"_blank" hr=
+ef=3D"https://www.facebook.com/UniMallvietnam"><img alt=3D"Facebook" border=
+=3D"0" hspace=3D"0" vspace=3D"0" style=3D"vertical-align:top;" target=3D"_b=
+lank" src=3D"https://app.sendinblue.com/rnb-editor/assets/new_images/theme1=
+/rnb_ico_fb.png"></a></span>
+
+                                         =
+                                                    </td>
+
+            =
+                                                                           =
+   </tr>
+
+                                                             =
+                          </tbody>
+
+                                   =
+                                                 </table>
+
+            =
+                                                                     </div>=
+
+
+                                                                     =
+            <div class=3D"rnb-social-center">
+
+                        =
+                                                            <table align=3D=
+"left" style=3D"float:left; display: inline-block" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0">
+
+                                            =
+                                           <tbody>
+
+                   =
+                                                                       <tr>=
+
+
+                                                                     =
+                        <td style=3D"padding:0px 5px 5px 0px; mso-padding-a=
+lt: 0px 2px 5px 0px;" align=3D"left">
+
+                                =
+                                                                <span style=
+=3D"color:#ffffff; font-weight:normal;">
+
+                             =
+                                                                   <a targe=
+t=3D"_blank" href=3D"#"><img alt=3D"Twitter" border=3D"0" hspace=3D"0" vspa=
+ce=3D"0" style=3D"vertical-align:top;" target=3D"_blank" src=3D"https://app=
+.sendinblue.com/rnb-editor/assets/new_images/theme1/rnb_ico_tw.png"></a></s=
+pan>
+
+                                                                 =
+                            </td>
+
+                                    =
+                                                      </tr>
+
+          =
+                                                                           =
+  </tbody>
+
+                                                           =
+                         </table>
+
+                                    =
+                                             </div>
+
+                  =
+                                                            =20
+
+        =
+                                                                         <d=
+iv class=3D"rnb-social-center">
+
+                                      =
+                                              <table align=3D"left" style=
+=3D"float:left; display: inline-block" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0">
+
+                                                        =
+                               <tbody>
+
+                               =
+                                                           <tr>
+
+      =
+                                                                           =
+            <td style=3D"padding:0px 5px 5px 0px; mso-padding-alt: 0px 2px =
+5px 0px;" align=3D"left">
+
+                                            =
+                                                    <span style=3D"color:#f=
+fffff; font-weight:normal;">
+
+                                         =
+                                                       <a target=3D"_blank"=
+ href=3D"https://www.instagram.com/unimallvietnam/"><img alt=3D"Instagram" =
+border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"vertical-align:top;" target=
+=3D"_blank" src=3D"https://app.sendinblue.com/rnb-editor/assets/new_images/=
+theme1/rnb_ico_ig.png"></a></span>
+
+                                   =
+                                                          </td>
+
+      =
+                                                                           =
+         </tr>
+
+                                                       =
+                                </tbody>
+
+                             =
+                                                       </table>
+
+      =
+                                                                           =
+</div>
+
+                                                               =
+                  <div class=3D"rnb-social-center">
+
+                  =
+                                                                  <table al=
+ign=3D"left" style=3D"float:left; display: inline-block" border=3D"0" cellp=
+adding=3D"0" cellspacing=3D"0">
+
+                                      =
+                                                 <tbody>
+
+             =
+                                                                           =
+  <tr>
+
+                                                               =
+                              <td style=3D"padding:0px 5px 5px 0px; mso-pad=
+ding-alt: 0px 2px 5px 0px;" align=3D"left">
+
+                          =
+                                                                      <span=
+ style=3D"color:#ffffff; font-weight:normal;">
+
+                       =
+                                                                         <a=
+ target=3D"_blank" href=3D"https://www.youtube.com/channel/UCpa5xYUOwFvncN6=
+03HW9wBQ"><img alt=3D"Youtube" border=3D"0" hspace=3D"0" vspace=3D"0" style=
+=3D"vertical-align:top;" target=3D"_blank" src=3D"https://app.sendinblue.co=
+m/rnb-editor/assets/new_images/theme1/rnb_ico_yt.png"></a></span>
+
+    =
+                                                                           =
+              </td>
+
+                                                  =
+                                        </tr>
+
+                        =
+                                                               </tbody>
+=
+
+                                                                        =
+            </table>
+
+                                                 =
+                                </div>
+
+                               =
+                                               </td>
+
+                 =
+                                                          </tr>
+
+      =
+                                                                  </tbody><=
+/table>
+
+                                                        </th><=
+/tr>
+
+                                            </tbody></table></td>=
+
+
+                                    </tr>
+
+                      =
+              <tr>
+
+                                        <td height=
+=3D"10" style=3D"font-size:1px; line-height:10px; mso-hide: all;">=C2=A0</t=
+d>
+
+                                    </tr>
+
+                    =
+            </tbody></table>
+
+   =20
+
+                            </t=
+d>
+
+                        </tr></tbody></table>
+
+                =
+   =20
+
+                </div></td>
+
+        </tr><tr>
+
+   =20
+=
+
+            <td align=3D"center" valign=3D"top">
+
+   =20
+
+        =
+        <div style=3D"background-color: rgb(255, 255, 255); border-radius: =
+0px;">
+
+                    <table class=3D"rnb-del-min-width" width=3D=
+"100%" cellpadding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"min-width:=
+100%;" name=3D"Layout_14">
+
+                    <tbody><tr>
+
+      =
+                  <td class=3D"rnb-del-min-width" align=3D"center" valign=
+=3D"top">
+
+                            <a href=3D"#" name=3D"Layout_14"=
+></a>
+
+                            <table width=3D"100%" border=3D"0" c=
+ellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffff=
+ff" style=3D"background-color: rgb(255, 255, 255); padding-left: 20px; padd=
+ing-right: 20px; border-collapse: separate; border-radius: 0px; border-bott=
+om: 0px none rgb(200, 200, 200);">
+
+   =20
+
+                         =
+                   <tbody><tr>
+
+                                       =
+         <td height=3D"0" style=3D"font-size:1px; line-height:0px; mso-hide=
+: all;">=C2=A0</td>
+
+                                            </tr>=
+
+
+                                            <tr>
+
+               =
+                                 <td valign=3D"top" class=3D"rnb-container-=
+padding" align=3D"left">
+
+   =20
+
+                                   =
+                 <table width=3D"100%" border=3D"0" cellpadding=3D"0" cells=
+pacing=3D"0" class=3D"rnb-columns-container">
+
+                        =
+                                <tbody><tr>
+
+                          =
+                                  <th class=3D"rnb-force-col" style=3D"text=
+-align: left; font-weight: normal; padding-right: 0px;" valign=3D"top">
+=
+
+   =20
+
+                                                              =
+  <table border=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" wi=
+dth=3D"100%" align=3D"left" class=3D"rnb-col-1">
+
+   =20
+
+           =
+                                                         <tbody><tr>
+
+ =
+                                                                       <td =
+style=3D"font-size:14px; font-family:Arial,Helvetica,sans-serif, sans-serif=
+; color:#3c4858;"><div style=3D"text-align: center;"><span style=3D"font-si=
+ze:15px;">* =C4=90=C3=A2y email t=E1=BB=B1 =C4=91=E1=BB=99ng g=E1=BB=ADi t=
+=E1=BB=AB h=E1=BB=87 th=E1=BB=91ng c=E1=BB=A7a UniMall; vui l=C3=B2ng kh=
+=C3=B4ng tr=E1=BA=A3 l=E1=BB=9Di Email n=C3=A0y.</span></div>
+
+   =20
+=
+
+    <div style=3D"text-align: center;">=C2=A0</div>
+
+   =20
+
+    <=
+div style=3D"text-align: center;"><span style=3D"color:#0000FF;"><span styl=
+e=3D"font-size:16px;"> <a href=3D"https://unimall.vn/">UniMall</a> | <a hre=
+f=3D"https://unimall.vn/vi/san-pham/gia-vi-tu-nhien.html">Gia V=E1=BB=8B T=
+=E1=BB=B1 Nhi=C3=AAn</a> | <a href=3D"https://unimall.vn/dang-nhap">=C4=
+=90=C4=83ng nh=E1=BA=ADp t=C3=A0i kho=E1=BA=A3n</a></span></span></div>
+=
+
+   =20
+
+    <div style=3D"text-align: center;"><span style=3D"color:#0=
+00000;"><span style=3D"font-size:16px;">Copyright =C2=A9 UniMallI, All righ=
+ts reserved.</span></span></div>
+
+    </td>
+
+                      =
+                                              </tr>
+
+                  =
+                                                  </tbody></table>
+
+   =
+=20
+
+                                                                </th=
+></tr>
+
+                                                    </tbody></t=
+able></td>
+
+                                            </tr>
+
+    =
+                                        <tr>
+
+                         =
+                       <td height=3D"20" style=3D"font-size:1px; line-heigh=
+t:20px; mso-hide: all;">=C2=A0</td>
+
+                                  =
+          </tr>
+
+                                        </tbody></tabl=
+e>
+
+                        </td>
+
+                    </tr>
+
+ =
+               </tbody></table>
+
+                </div></td>
+
+     =
+   </tr></tbody></table>
+
+            =20
+
+                          =
+  </td>
+
+            </tr>
+
+            </tbody></table>
+
+    =
+
+
+    </body></html>
+
+--_=_swift_1667965694_60a6c25464c4f36d49f163a5803c0519_=_
+Content-Type: text/html; charset=utf-8
+Content-Transfer-Encoding: quoted-printable
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.=
+w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns=3D"http://www.=
+w3.org/1999/xhtml" xmlns:v=3D"urn:schemas-microsoft-com:vml" xmlns:o=3D"urn=
+:schemas-microsoft-com:office:office">
+<head>
+<meta http-equiv=3D"X-UA-=
+Compatible" content=3D"IE=3Dedge">
+<meta name=3D"viewport" content=3D"wid=
+th=3Ddevice-width, initial-scale=3D1">
+<meta http-equiv=3D"Content-Type" =
+content=3D"text/html; charset=3DUTF-8">
+<meta name=3D"x-apple-disable-mes=
+sage-reformatting">
+<meta name=3D"apple-mobile-web-app-capable" content=
+=3D"yes">
+<meta name=3D"apple-mobile-web-app-status-bar-style" content=3D=
+"black">
+<meta name=3D"format-detection" content=3D"telephone=3Dno">
+<t=
+itle></title>
+<style type=3D"text/css">
+    /* Resets */
+    .ReadMsgBody { width: 100%; background-color: #ebebeb;}
+    .ExternalClass {width: 100%; background-color: #ebebeb;}
+    .ExternalClass, .ExternalClass p, .ExternalClass span, .ExternalClass f=
+ont, .ExternalClass td, .ExternalClass div {line-height:100%;}
+    a[x-apple-data-detectors]{
+    color:inherit !important;
+    text-decoration:none !important;
+    font-size:inherit !important;
+    font-family:inherit !important;
+    font-weight:inherit !important;
+    line-height:inherit !important;
+    }
+    body {-webkit-text-size-adjust:none; -ms-text-size-adjust:none;}
+    body {margin:0; padding:0;}
+    .yshortcuts a {border-bottom: none !important;}
+    .rnb-del-min-width{ min-width: 0 !important; }
+    /* Add new outlook css start */
+    .templateContainer{
+    max-width:590px !important;
+    width:auto !important;
+    }
+    /* Add new outlook css end */
+    /* Image width by default for 3 columns */
+    img[class=3D"rnb-col-3-img"] {
+    max-width:170px;
+    }
+    /* Image width by default for 2 columns */
+    img[class=3D"rnb-col-2-img"] {
+    max-width:264px;
+    }
+    /* Image width by default for 2 columns aside small size */
+    img[class=3D"rnb-col-2-img-side-xs"] {
+    max-width:180px;
+    }
+    /* Image width by default for 2 columns aside big size */
+    img[class=3D"rnb-col-2-img-side-xl"] {
+    max-width:350px;
+    }
+    /* Image width by default for 1 column */
+    img[class=3D"rnb-col-1-img"] {
+    max-width:550px;
+    }
+    /* Image width by default for header */
+    img[class=3D"rnb-header-img"] {
+    max-width:590px;
+    }
+    /* Ckeditor line-height spacing */
+    .rnb-force-col p, ul, ol{margin:0px!important;}
+    .rnb-del-min-width p, ul, ol{margin:0px!important;}
+    /* tmpl-2 preview */
+    .rnb-tmpl-width{ width:100%!important;}
+    /* tmpl-11 preview */
+    .rnb-social-width{padding-right:15px!important;}
+    /* tmpl-11 preview */
+    .rnb-social-align{float:right!important;}
+    /* Ul Li outlook extra spacing fix */
+    li{mso-margin-top-alt: 0; mso-margin-bottom-alt: 0;}
+    /* Outlook fix */
+    table {mso-table-lspace:0pt; mso-table-rspace:0pt;}
+    /* Outlook fix */
+    table, tr, td {border-collapse: collapse;}
+    /* Outlook fix */
+    p,a,li,blockquote {mso-line-height-rule:exactly;}
+    /* Outlook fix */
+    .msib-right-img { mso-padding-alt: 0 !important;}
+    @media  only screen and (min-width:590px){
+    /* mac fix width */
+    .templateContainer{width:590px !important;}
+    }
+    @media  screen and (max-width: 360px){
+    /* yahoo app fix width "tmpl-2 tmpl-10 tmpl-13" in android devices */
+    .rnb-yahoo-width{ width:360px !important;}
+    }
+    @media  screen and (max-width: 380px){
+    /* fix width and font size "tmpl-4 tmpl-6" in mobile preview */
+    .element-img-text{ font-size:24px !important;}
+    .element-img-text2{ width:230px !important;}
+    .content-img-text-tmpl-6{ font-size:24px !important;}
+    .content-img-text2-tmpl-6{ width:220px !important;}
+    }
+    @media  screen and (max-width: 480px) {
+    td[class=3D"rnb-container-padding"] {
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    }
+    /* force container nav to (horizontal) blocks */
+    td.rnb-force-nav {
+    display: inherit;
+    }
+    /* fix text alignment "tmpl-11" in mobile preview */
+    .rnb-social-text-left {
+    width: 100%;
+    text-align: center;
+    margin-bottom: 15px;
+    }
+    .rnb-social-text-right {
+    width: 100%;
+    text-align: center;
+    }
+    }
+    @media  only screen and (max-width: 600px) {
+    /* center the address &amp; social icons */
+    .rnb-text-center {text-align:center !important;}
+    /* force container columns to (horizontal) blocks */
+    th.rnb-force-col {
+    display: block;
+    padding-right: 0 !important;
+    padding-left: 0 !important;
+    width:100%;
+    }
+    table.rnb-container {
+    width: 100% !important;
+    }
+    table.rnb-btn-col-content {
+    width: 100% !important;
+    }
+    table.rnb-col-3 {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    /* change left/right padding and margins to top/bottom ones */
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    /*border-bottom: 1px solid #eee;*/
+    }
+    table.rnb-last-col-3 {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    }
+    table.rnb-col-2 {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    /* change left/right padding and margins to top/bottom ones */
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    /*border-bottom: 1px solid #eee;*/
+    }
+    table.rnb-col-2-noborder-onright {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    /* change left/right padding and margins to top/bottom ones */
+    margin-bottom: 10px;
+    padding-bottom: 10px;
+    }
+    table.rnb-col-2-noborder-onleft {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    /* change left/right padding and margins to top/bottom ones */
+    margin-top: 10px;
+    padding-top: 10px;
+    }
+    table.rnb-last-col-2 {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    }
+    table.rnb-col-1 {
+    /* unset table align=3D"left/right" */
+    float: none !important;
+    width: 100% !important;
+    }
+    img.rnb-col-3-img {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    img.rnb-col-2-img {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    img.rnb-col-2-img-side-xs {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    img.rnb-col-2-img-side-xl {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    img.rnb-col-1-img {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    img.rnb-header-img {
+    /**max-width:none !important;**/
+    width:100% !important;
+    margin:0 auto;
+    }
+    img.rnb-logo-img {
+    /**max-width:none !important;**/
+    width:100% !important;
+    }
+    td.rnb-mbl-float-none {
+    float:inherit !important;
+    }
+    .img-block-center{text-align:center !important;}
+    .logo-img-center
+    {
+    float:inherit !important;
+    }
+    /* tmpl-11 preview */
+    .rnb-social-align{margin:0 auto !important; float:inherit !important;}
+    /* tmpl-11 preview */
+    .rnb-social-center{display:inline-block;}
+    /* tmpl-11 preview */
+    .social-text-spacing{margin-bottom:0px !important; padding-bottom:0px !=
+important;}
+    /* tmpl-11 preview */
+    .social-text-spacing2{padding-top:15px !important;}
+    /* UL bullet fixed in outlook */
+    ul {mso-special-format:bullet;}
+    }</style>
+<!--[if gte mso 11]><style type=3D"text/css">table{border-s=
+pacing: 0; }table td {border-collapse: separate;}</style><![endif]--><!--[i=
+f !mso]><!--><style type=3D"text/css">table{border-spacing: 0;} table td {b=
+order-collapse: collapse;}</style>
+<!--<![endif]--><!--[if gte mso 15]><x=
+ml><o:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerI=
+nch></o:OfficeDocumentSettings></xml><![endif]--><!--[if gte mso 9]><xml><o=
+:OfficeDocumentSettings><o:AllowPNG/><o:PixelsPerInch>96</o:PixelsPerInch><=
+/o:OfficeDocumentSettings></xml><![endif]-->
+</head>
+<body style=3D"box=
+-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe=
+ UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI =
+Emoji', 'Segoe UI Symbol'; position: relative; background-color: #ffffff; c=
+olor: #718096; height: 100%; line-height: 1.4; width: 100% !important; -web=
+kit-text-size-adjust: none; -ms-text-size-adjust: none; margin: 0; padding:=
+ 0;">
+   =20
+    <table border=3D"0" align=3D"center" width=3D"100%" cellpadding=3D"0" c=
+ellspacing=3D"0" class=3D"main-template" bgcolor=3D"#f9fafc" style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt; mso-tab=
+le-rspace: 0pt; border-collapse: collapse; border-spacing: 0; background-co=
+lor: rgb(249, 250, 252);"><tbody style=3D"box-sizing: border-box; font-fami=
+ly: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial=
+, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; pos=
+ition: relative;"><tr style=3D"border-collapse: collapse;">
+<td align=3D"=
+center" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple=
+-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-ser=
+if, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: rel=
+ative; border-collapse: collapse;">
+                <table border=3D"0" cellpadding=3D"0" cellspacing=3D"0" wid=
+th=3D"590" class=3D"templateContainer" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-collapse: collapse; border-spacing: 0; max-width: 590px!important; width: =
+590px;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system,=
+ BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'App=
+le Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">=
+
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"center" valign=
+=3D"top" style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-=
+collapse: collapse;">
+   =20
+                <table class=3D"rnb-del-min-width" width=3D"100%" cellpaddi=
+ng=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box; fo=
+nt-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica=
+, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbo=
+l'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; borde=
+r-collapse: collapse; border-spacing: 0; min-width: 590px;" name=3D"Layout_=
+0" id=3D"Layout_0"><tbody style=3D"box-sizing: border-box; font-family: -ap=
+ple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-=
+serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: =
+relative;"><tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del=
+-min-width" valign=3D"top" align=3D"center" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; border-collapse: collapse; min-width: 590px;">
+                            <a href=3D"#" name=3D"Layout_0" style=3D"box-si=
+zing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI=
+', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emo=
+ji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-height=
+-rule: exactly;"></a>
+                            <table width=3D"100%" cellpadding=3D"0" border=
+=3D"0" height=3D"38" cellspacing=3D"0" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border=
+-collapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border=
+-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, H=
+elvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe =
+UI Symbol'; position: relative;"><tr style=3D"border-collapse: collapse;">=
+
+<td valign=3D"top" height=3D"38" style=3D"box-sizing: border-box; font-f=
+amily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ar=
+ial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; =
+position: relative; border-collapse: collapse;">
+                                        <img width=3D"20" height=3D"38" sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; display: block; max=
+-height: 38px; max-width: 20px;" alt=3D"" src=3D"https://img.mailinblue.com=
+/3994151/images/rnb/original/61246ae5d964a1288e5d3b09.png">
+</td>
+                                </tr></tbody></table>
+</td>
+                    </tr></tbody></table>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(11, 45, 37); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 590px;" name=3D"Lay=
+out_1" id=3D"Layout_1"><tbody style=3D"box-sizing: border-box; font-family:=
+ -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, s=
+ans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; positi=
+on: relative;"><tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb=
+-del-min-width" align=3D"center" valign=3D"top" style=3D"box-sizing: border=
+-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, H=
+elvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe =
+UI Symbol'; position: relative; border-collapse: collapse; min-width: 590px=
+;">
+                            <a href=3D"#" name=3D"Layout_1" style=3D"box-si=
+zing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI=
+', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emo=
+ji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-height=
+-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#0b2d25" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(11, 45, 3=
+7); border-radius: 0px; padding-left: 20px; padding-right: 20px; border-col=
+lapse: separate;"><tbody style=3D"box-sizing: border-box; font-family: -app=
+le-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-s=
+erif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: r=
+elative;">
+<tr style=3D"border-collapse: collapse;">
+<td height=3D"20" =
+style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystem=
+Font, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji'=
+, 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-collapse:=
+ collapse; font-size: 1px; line-height: 20px; mso-hide: all;">=C2=A0</td>
+                                </tr>
+<tr style=3D"border-collapse: colla=
+pse;">
+<td valign=3D"top" class=3D"rnb-container-padding" align=3D"left" =
+style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystem=
+Font, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji'=
+, 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-collapse:=
+ collapse;">
+                                        <table width=3D"100%" cellpadding=
+=3D"0" border=3D"0" align=3D"center" cellspacing=3D"0" style=3D"box-sizing:=
+ border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Ro=
+boto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', =
+'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt; mso-table-rsp=
+ace: 0pt; border-collapse: collapse; border-spacing: 0;"><tbody style=3D"bo=
+x-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Sego=
+e UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI=
+ Emoji', 'Segoe UI Symbol'; position: relative;"><tr style=3D"border-collap=
+se: collapse;">
+<td valign=3D"top" align=3D"center" style=3D"box-sizing: =
+border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob=
+oto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', '=
+Segoe UI Symbol'; position: relative; border-collapse: collapse;">
+                                                    <table cellpadding=3D"0=
+" border=3D"0" align=3D"center" cellspacing=3D"0" class=3D"logo-img-center"=
+ style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSyste=
+mFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji=
+', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspac=
+e: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0=
+;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, Blin=
+kMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Co=
+lor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><tr s=
+tyle=3D"border-collapse: collapse;">
+<td valign=3D"middle" align=3D"cente=
+r" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSys=
+temFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emo=
+ji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-collap=
+se: collapse; line-height: 1px;">
+                                                                <div style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; border-top: 0px None =
+#000; border-right: 0px None #000; border-bottom: 0px None #000; border-lef=
+t: 0px None #000; display: inline-block;" cellspacing=3D"0" cellpadding=3D"=
+0" border=3D"0"><div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive;"><img width=3D"300" vspace=3D"0" hspace=3D"0" border=3D"0" alt=3D"adma=
+ll" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSy=
+stemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Em=
+oji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; float: left;=
+ max-width: 300px; display: block;" class=3D"rnb-logo-img" src=3D"https://i=
+mg.mailinblue.com/3994151/images/rnb/original/61246ae5d964a1288e5d3b09.png"=
+></div></div>
+</td>
+                                                        </tr></tbody></tabl=
+e>
+</td>
+                                            </tr></tbody></table>
+</td>
+                                </tr>
+<tr style=3D"border-collapse: colla=
+pse;">
+<td height=3D"20" style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; border-collapse: collapse; font-size: 1px; line-height: 20px; ms=
+o-hide: all;">=C2=A0</td>
+                                </tr>
+</tbody></table>
+</td>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_8"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, B=
+linkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple=
+ Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><t=
+r style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" a=
+lign=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_8" style=3D"box-si=
+zing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI=
+', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emo=
+ji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-height=
+-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"20" style=3D"box-sizing: border-=
+box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, He=
+lvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe U=
+I Symbol'; position: relative; border-collapse: collapse; font-size: 1px; l=
+ine-height: 20px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+   =20
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; fon=
+t-weight: normal; padding-right: 0px;" valign=3D"top">
+   =20
+                                                                <table bord=
+er=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+align=3D"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-fa=
+mily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ari=
+al, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; p=
+osition: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-col=
+lapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d style=3D"box-sizing: border-box; position: relative; border-collapse: col=
+lapse; font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif=
+; color: #3c4858;">
+<div style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative;">
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">Xin ch=C3=A0o kh=C3=A1ch h=C3=A0ng: <b style=3D"box-=
+sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe =
+UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI E=
+moji', 'Segoe UI Symbol'; position: relative;">Tien Van Pham</b></span></di=
+v>
+        <div style=3D"box-sizing: border-box; font-family: -apple-system, B=
+linkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple=
+ Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; tex=
+t-align: justify;"><span style=3D"box-sizing: border-box; font-family: -app=
+le-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-s=
+erif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: r=
+elative; font-size: 16px;">Qu=C3=BD kh=C3=A1ch =C4=91ang c=C3=B3 =C4=91=
+=C6=A1n h=C3=A0ng s=E1=BB=91 <b style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative;">#009453</b>=C4=91=C6=B0=E1=BB=A3c t=E1=BA=A1o v=C3=A0o ng=
+=C3=A0y 09-11-2022 =C4=91ang =E1=BB=9F tr=E1=BA=A1ng th=C3=A1i ch=C6=B0a th=
+anh to=C3=A1n. </span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">Qu=C3=BD kh=C3=A1ch c=C3=B3 th=E1=BB=83 thanh to=
+=C3=A1n t=E1=BB=AB b=C3=A2y gi=E1=BB=9D. N=E1=BA=BFu qu=C3=BD kh=C3=A1ch =
+=C4=91=C3=A3 =C4=91=E1=BA=B7t mua h=C3=A0ng v=C3=A0 =C4=91=C3=A2y l=C3=
+=A0 =C4=91=C6=A1n h=C3=A0ng gia h=E1=BA=A1n th=C3=AC vi=E1=BB=87c thanh to=
+=C3=A1n tr=C6=B0=E1=BB=9Bc ng=C3=A0y =C4=91=E1=BA=BFn h=E1=BA=A1n thanh to=
+=C3=A1n l=C3=A0 12/11/2022 s=E1=BA=BD gi=C3=BAp qu=C3=BD kh=C3=A1ch tr=
+=C3=A1nh b=E1=BB=8B l=E1=BB=A1 h=E1=BA=A1n thanh to=C3=A1n. </span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">=C2=A0</span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">H=C3=ACnh th=E1=BB=A9c thanh to=C3=A1n c=E1=BB=A7a q=
+u=C3=BD kh=C3=A1ch l=C3=A0: Chuy=E1=BB=83n kho=E1=BA=A3n ng=C3=A2n h=C3=
+=A0ng.
+     </span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">=C2=A0</span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">T=E1=BB=95ng ti=E1=BB=81n ph=E1=BA=A3i thanh to=
+=C3=A1n: <b style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">200=
+.100</b></span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; font-size: 16px;">=C2=A0</span></div>
+        <div style=3D"box-sizing: border-box; font-family: -apple-system, B=
+linkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple=
+ Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; tex=
+t-align: justify;"><span style=3D"box-sizing: border-box; font-family: -app=
+le-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-s=
+erif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: r=
+elative; font-size: 16px;">Ng=C3=A0y =C4=91=E1=BA=BFn h=E1=BA=A1n thanh to=
+=C3=A1n: 12/11/2022</span></div>
+        <div style=3D"box-sizing: border-box; font-family: -apple-system, B=
+linkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple=
+ Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; tex=
+t-align: justify;"><span style=3D"box-sizing: border-box; font-family: -app=
+le-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-s=
+erif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: r=
+elative; font-size: 16px;">Xem ho=C3=A1 =C4=91=C6=A1n =C4=91=C6=B0=E1=BB=
+=A3c =C4=91=C3=ADnh k=C3=A8m theo email n=C3=A0y: <a href=3D"https://unimal=
+l.vn/vi/user/in-pdf.html?data_id=3D34" download style=3D"box-sizing: border=
+-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, H=
+elvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe =
+UI Symbol'; position: relative; color: #3869d4; mso-line-height-rule: exact=
+ly;">Xem chi ti=E1=BA=BFt</a></span></div>
+   =20
+</div>
+    </td>
+ =20
+                                                                    </tr></=
+tbody></table>
+</th></tr></tbody></table>
+</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-box; font=
+-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, =
+Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'=
+; position: relative; border-collapse: collapse; font-size: 1px; line-heigh=
+t: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+</tbody></table>
+</td=
+>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                 =20
+                    <table width=3D"100%" cellpadding=3D"0" border=3D"0" ce=
+llspacing=3D"0" name=3D"Layout_2" id=3D"Layout_2" style=3D"box-sizing: bord=
+er-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,=
+ Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Sego=
+e UI Symbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: =
+0pt; border-collapse: collapse; border-spacing: 0;"><tbody style=3D"box-siz=
+ing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'=
+, Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoj=
+i', 'Segoe UI Symbol'; position: relative;"><tr style=3D"border-collapse: c=
+ollapse;">
+<td align=3D"center" valign=3D"top" style=3D"box-sizing: borde=
+r-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, =
+Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe=
+ UI Symbol'; position: relative; border-collapse: collapse;">
+<a href=3D"=
+#" name=3D"Layout_2" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; color: #3869d4; mso-line-height-rule: exactly;"></a>
+                            <table border=3D"0" width=3D"100%" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; height: 0px; background-color: =
+rgb(255, 255, 255); border-radius: 0px; border-collapse: separate; padding-=
+left: 20px; padding-right: 20px;"><tbody style=3D"box-sizing: border-box; f=
+ont-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetic=
+a, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symb=
+ol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<td c=
+lass=3D"rnb-container-padding" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; font-size: px;">
+   =20
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"rnb-columns-container" align=3D"left" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0; marg=
+in: auto;"><tbody style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+;"><tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text=
+-align: center; font-weight: normal;">
+   =20
+                                                    <table border=3D"0" cel=
+lspacing=3D"0" cellpadding=3D"0" align=3D"center" class=3D"rnb-col-1" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"><tb=
+ody style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSy=
+stemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Em=
+oji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr styl=
+e=3D"border-collapse: collapse;">
+<td height=3D"10" style=3D"box-sizing: =
+border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob=
+oto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', '=
+Segoe UI Symbol'; position: relative; border-collapse: collapse;"></td>
+                                                        </tr>
+<tr style=
+=3D"border-collapse: collapse;">
+<td style=3D"box-sizing: border-box; pos=
+ition: relative; border-collapse: collapse; font-family: Arial,Helvetica,sa=
+ns-serif; color: #3c4858; text-align: left;">
+   =20
+                                                                <span style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3c4858;"><spa=
+n style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSyst=
+emFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoj=
+i', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 20p=
+x;"><strong style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">H=
+=C6=B0=E1=BB=9Bng d=E1=BA=ABn thanh to=C3=A1n</strong></span></span>
+                                                            </td>
+                                                        </tr>
+<tr style=
+=3D"border-collapse: collapse;">
+<td height=3D"10" style=3D"box-sizing: b=
+order-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo=
+to, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'S=
+egoe UI Symbol'; position: relative; border-collapse: collapse;"></td>
+                                                        </tr>
+</tbody></t=
+able>
+</th></tr></tbody></table>
+</td>
+                                </tr></tbody></table>
+</td>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_9"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, B=
+linkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple=
+ Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><t=
+r style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" a=
+lign=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_9" style=3D"box-si=
+zing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI=
+', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emo=
+ji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-height=
+-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-b=
+ox; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Hel=
+vetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI=
+ Symbol'; position: relative; border-collapse: collapse; font-size: 1px; li=
+ne-height: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+   =20
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; fon=
+t-weight: normal; padding-right: 0px;" valign=3D"top">
+   =20
+                                                                <table bord=
+er=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+align=3D"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-fa=
+mily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ari=
+al, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; p=
+osition: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-col=
+lapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d style=3D"box-sizing: border-box; position: relative; border-collapse: col=
+lapse; font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif=
+; color: #3c4858;"><div style=3D"box-sizing: border-box; font-family: -appl=
+e-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-se=
+rif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: re=
+lative;"><span style=3D"box-sizing: border-box; font-family: -apple-system,=
+ BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'App=
+le Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; f=
+ont-size: 16px;">Qu=C3=BD kh=C3=A1ch chuy=E1=BB=83n kho=E1=BA=A3n s=
+=E1=BB=91 ti=E1=BB=81n <b style=3D"box-sizing: border-box; font-family: -ap=
+ple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-=
+serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: =
+relative;">200.100</b>v=C3=A0o m=E1=BB=99t trong c=C3=A1c t=C3=A0i kho=
+=E1=BA=A3n ng=C3=A2n h=C3=A0ng c=E1=BB=A7a UniMall: </span></div></td>
+                                                                    </tr></=
+tbody></table>
+</th></tr></tbody></table>
+</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td height=3D"20" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative; border-collapse: collapse; font-size: 1px; line-heig=
+ht: 20px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+</tbody></table>
+</td=
+>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table width=3D"100%" cellpadding=3D"0" border=3D"0" ce=
+llspacing=3D"0" name=3D"Layout_10" id=3D"Layout_10" style=3D"box-sizing: bo=
+rder-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot=
+o, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Se=
+goe UI Symbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace=
+: 0pt; border-collapse: collapse; border-spacing: 0;"><tbody style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative;"><tr style=3D"border-collapse:=
+ collapse;">
+<td align=3D"center" valign=3D"top" style=3D"box-sizing: bor=
+der-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto=
+, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Seg=
+oe UI Symbol'; position: relative; border-collapse: collapse;">
+<a href=
+=3D"#" name=3D"Layout_10" style=3D"box-sizing: border-box; font-family: -ap=
+ple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-=
+serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: =
+relative; color: #3869d4; mso-line-height-rule: exactly;"></a>
+                            <table border=3D"0" width=3D"100%" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; height: 0px; background-color: =
+rgb(255, 255, 255); border-radius: 0px; border-collapse: separate; padding-=
+left: 20px; padding-right: 20px;"><tbody style=3D"box-sizing: border-box; f=
+ont-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetic=
+a, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symb=
+ol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<td c=
+lass=3D"rnb-container-padding" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; font-size: px;">
+   =20
+                                        <table border=3D"0" cellpadding=3D"=
+0" cellspacing=3D"0" class=3D"rnb-columns-container" align=3D"left" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0; marg=
+in: auto;"><tbody style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+;"><tr style=3D"border-collapse: collapse;">
+<th class=3D"rnb-force-col" =
+align=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system,=
+ BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'App=
+le Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; t=
+ext-align: center; font-weight: normal;">
+
+                                                        <table border=3D"0"=
+ cellspacing=3D"0" cellpadding=3D"0" align=3D"center" class=3D"rnb-col-1" s=
+tyle=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemF=
+ont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',=
+ 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace:=
+ 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"=
+><tbody style=3D"box-sizing: border-box; font-family: -apple-system, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr =
+style=3D"border-collapse: collapse;">
+<td height=3D"10" style=3D"box-sizi=
+ng: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',=
+ Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji=
+', 'Segoe UI Symbol'; position: relative; border-collapse: collapse;"></td>
+                                                                </tr>
+<tr=
+ style=3D"border-collapse: collapse;">
+<td style=3D"box-sizing: border-bo=
+x; position: relative; border-collapse: collapse; font-family: Arial,Helvet=
+ica,sans-serif; color: #3c4858; text-align: left;">
+                                                                        <sp=
+an style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSys=
+temFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emo=
+ji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3c485=
+8;"><span style=3D"box-sizing: border-box; font-family: -apple-system, Blin=
+kMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Co=
+lor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-s=
+ize: 20px;"><strong style=3D"box-sizing: border-box; font-family: -apple-sy=
+stem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relati=
+ve;">Ng=C3=A2n h=C3=A0ng Th=C6=B0=C6=A1ng M=E1=BA=A1i =C3=81 Ch=C3=A2u (ACB=
+)</strong></span></span>
+                                                                    </td>
+                                                                </tr>
+<tr=
+ style=3D"border-collapse: collapse;">
+<td height=3D"10" style=3D"box-siz=
+ing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'=
+, Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoj=
+i', 'Segoe UI Symbol'; position: relative; border-collapse: collapse;"></td=
+>
+                                                                </tr>
+</t=
+body></table>
+</th>
+                                                </tr></tbody></table>
+</t=
+d>
+                                </tr></tbody></table>
+</td>
+                    </tr></tbody></table>
+</div>
+        </td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_11"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" =
+align=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_11" style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-heigh=
+t-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-b=
+ox; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Hel=
+vetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI=
+ Symbol'; position: relative; border-collapse: collapse; font-size: 1px; li=
+ne-height: 0px; mso-hide: all;">=C2=A0</td>
+                                    </tr>
+<tr style=3D"border-collapse: c=
+ollapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" align=3D"le=
+ft" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSy=
+stemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Em=
+oji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-colla=
+pse: collapse;">
+
+                                            <table width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-container" sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"><=
+tbody style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><tr style=
+=3D"border-collapse: collapse;">
+<th class=3D"rnb-force-col" style=3D"box=
+-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe=
+ UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI =
+Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; font-weigh=
+t: normal; padding-right: 0px;" valign=3D"top">
+
+                                                        <table border=3D"0"=
+ valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" align=3D=
+"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: c=
+ollapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box; font-f=
+amily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ar=
+ial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; =
+position: relative;"><tr style=3D"border-collapse: collapse;">
+<td style=
+=3D"box-sizing: border-box; position: relative; border-collapse: collapse; =
+font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif; color=
+: #3c4858;">
+                                                                        <di=
+v style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSyst=
+emFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoj=
+i', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><strong style=3D"box-sizing: border-box; font-family: -apple-sy=
+stem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relati=
+ve;"><span style=3D"box-sizing: border-box; font-family: -apple-system, Bli=
+nkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple C=
+olor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-=
+size: 16px;">Chinh Nh=C3=A1nh: Th=E1=BB=A7y Nguy=C3=AAn =E2=80=93 H=
+=E1=BA=A3i Ph=C3=B2ng</span></strong></div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;"><strong style=3D"box-sizing: border-box; font-family: -=
+apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, san=
+s-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position=
+: relative;">S=E1=BB=91 t=C3=A0i Kho=E1=BA=A3n:</strong> 888 666 888 68</sp=
+an></div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;"><strong style=3D"box-sizing: border-box; font-family: -=
+apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, san=
+s-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position=
+: relative;">Ch=E1=BB=A7 T=C3=A0i Kho=E1=BA=A3n</strong>: V=C5=A8 M=
+=E1=BA=A0NH =C4=90I=E1=BB=80U</span></div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;">=C2=A0</div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;">=C2=A0</div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;">N=E1=BB=99i dung chuy=E1=BB=83n kho=E1=BA=A3n qu=C3=
+=BD kh=C3=A1ch vui l=C3=B2ng nh=E1=BA=ADp #009453 v=C3=A0o n=E1=BB=99i dung=
+ thanh to=C3=A1n =C4=91=E1=BB=83 h=E1=BB=87 th=E1=BB=91ng t=E1=BB=B1 =C4=
+=91=E1=BB=99ng k=C3=ADch ho=E1=BA=A1t l=C6=B0u gi=E1=BB=AF =C4=91=C6=A1n h=
+=C3=A0ng c=E1=BB=A7a b=E1=BA=A1n ngay khi UniMall nh=E1=BA=ADn =C4=91=C6=
+=B0=E1=BB=A3c thanh to=C3=A1n.</span></div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;">=C2=A0</div>
+                                                                           =
+=20
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;">M=E1=BB=8Di th=E1=BA=AFc m=E1=BA=AFc vui l=C3=B2ng li=
+=C3=AAn h=E1=BB=87 v=E1=BB=9Bi UniMall qua Hotline: 0356 105 899 ho=
+=E1=BA=B7c email hotro@unimall.vn =C4=91=E1=BB=83 =C4=91=C6=B0=E1=BB=A3c h=
+=E1=BB=97 tr=E1=BB=A3 t=E1=BB=91t nh=E1=BA=A5t..</span></div>
+                                                                        </d=
+iv>
+                                                                    </td>
+                                                                </tr></tbod=
+y></table>
+</th>
+                                                    </tr></tbody></table>=
+
+</td>
+                                    </tr>
+<tr style=3D"border-collapse: c=
+ollapse;">
+<td height=3D"20" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; font-size: 1px; line-height: 20px=
+; mso-hide: all;">=C2=A0</td>
+                                    </tr>
+</tbody></table>
+</td>
+                    </tr></tbody></table>
+</div>
+            </td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_11"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" =
+align=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_11" style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-heigh=
+t-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-b=
+ox; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Hel=
+vetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI=
+ Symbol'; position: relative; border-collapse: collapse; font-size: 1px; li=
+ne-height: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+   =20
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; fon=
+t-weight: normal; padding-right: 0px;" valign=3D"top">
+   =20
+                                                                <table bord=
+er=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+align=3D"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-fa=
+mily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ari=
+al, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; p=
+osition: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-col=
+lapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d style=3D"box-sizing: border-box; position: relative; border-collapse: col=
+lapse; font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif=
+; color: #3c4858;"><div style=3D"box-sizing: border-box; font-family: -appl=
+e-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-se=
+rif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: re=
+lative;">
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;">Qu=C3=BD kh=C3=A1ch =C4=91=C3=A3 l=C3=A0 th=C3=A0nh vi=
+=C3=AAn c=E1=BB=A7a Spice Club ch=C6=B0a? V=E1=BB=9Bi 50K ra nh=E1=BA=ADp t=
+h=C3=A0nh vi=C3=AAn Spice Club ,  Qu=C3=BD kh=C3=A1ch s=E1=BA=BD =C4=91=
+=C6=B0=E1=BB=A3c h=C6=B0=E1=BB=9Fng =C4=91=E1=BA=B7c quy=E1=BB=81n 5% khuy=
+=E1=BB=85n m=C3=A3i d=C3=B9ng tr=E1=BB=8Dn =C4=91=E1=BB=9Di v=C3=A0 nhi=
+=E1=BB=81u =C6=B0u =C4=91=C3=A3i =C4=91=E1=BA=B7c bi=E1=BB=87t kh=C3=A1c. <=
+/span></div>
+                                                                           =
+ <div style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align=
+: justify;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;">=C2=A0</span></div>
+                                                                         </=
+div></td>
+                                                                    </tr></=
+tbody></table>
+</th></tr></tbody></table>
+</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td height=3D"20" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative; border-collapse: collapse; font-size: 1px; line-heig=
+ht: 20px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+                                                    <div style=3D"box-sizin=
+g: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', =
+Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji'=
+, 'Segoe UI Symbol'; position: relative; text-align: justify;"><span style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px;">=
+=C2=A0</span></div>
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;">
+<th class=3D"rnb-force-col" vali=
+gn=3D"top" style=3D"box-sizing: border-box; font-family: -apple-system, Bli=
+nkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple C=
+olor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+                                                                    <table =
+cellpadding=3D"0" border=3D"0" align=3D"center" cellspacing=3D"0" class=3D"=
+rnb-btn-col-content" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-spacing: 0; margi=
+n: auto; border-collapse: separate;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d width=3D"auto" valign=3D"middle" bgcolor=3D"#ea7236" align=3D"center" hei=
+ght=3D"40" style=3D"box-sizing: border-box; position: relative; border-coll=
+apse: collapse; font-size: 18px; font-family: Arial,Helvetica,sans-serif; c=
+olor: #ffffff; font-weight: normal; padding-left: 20px; padding-right: 20px=
+; vertical-align: middle; background-color: #ea7236; border-radius: 4px; bo=
+rder-top: 0px None #000; border-right: 0px None #000; border-bottom: 0px No=
+ne #000; border-left: 0px None #000;">
+                                                                           =
+     <span style=3D"box-sizing: border-box; font-family: -apple-system, Bli=
+nkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple C=
+olor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; color=
+: #ffffff; font-weight: normal;">
+                                                                           =
+             <a style=3D"box-sizing: border-box; font-family: -apple-system=
+, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Ap=
+ple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; =
+mso-line-height-rule: exactly; text-decoration: none; color: #ffffff; font-=
+weight: normal;" target=3D"_blank" href=3D"https://unimall.vn/spice-club-re=
+gister">=C4=90=C4=83ng k=C3=BD th=C3=A0nh vi=C3=AAn Spice Club</a>
+                                                                           =
+         </span>
+                                                                           =
+ </td>
+                                                                        </t=
+r></tbody></table>
+<table border=3D"0" valign=3D"top" cellspacing=3D"0" c=
+ellpadding=3D"0" width=3D"550" align=3D"center" class=3D"rnb-col-1" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"></t=
+able>
+</th>
+                                                            </tr></tbody></=
+table>
+<div style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; te=
+xt-align: justify;"><span style=3D"box-sizing: border-box; font-family: -ap=
+ple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-=
+serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: =
+relative; font-size: 16px;">=C2=A0</span></div>
+                                                </td>
+                                            </tr>
+</tbody></table>
+</td=
+>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_13"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" =
+align=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_13" style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-heigh=
+t-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-b=
+ox; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Hel=
+vetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI=
+ Symbol'; position: relative; border-collapse: collapse; font-size: 1px; li=
+ne-height: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+   =20
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; fon=
+t-weight: normal; padding-right: 0px;" valign=3D"top">
+   =20
+                                                                <table bord=
+er=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+align=3D"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-fa=
+mily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ari=
+al, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; p=
+osition: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-col=
+lapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d style=3D"box-sizing: border-box; position: relative; border-collapse: col=
+lapse; font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif=
+; color: #3c4858;">
+<div style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative;"><span style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; font-size: 16px;"><strong style=3D"box-sizing: border-box; font-family: -=
+apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, san=
+s-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position=
+: relative;">C=C3=B4ng ty TNHH Unikery</strong></span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><span =
+style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystem=
+Font, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji'=
+, 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; font-size: 16px;=
+">=C2=A022 Ph=E1=BB=91 M=E1=BB=9Bi, Th=E1=BB=A7y S=C6=A1n, Th=E1=BB=A7y Ngu=
+y=C3=AAn, H=E1=BA=A3i Ph=C3=B2ng</span></div>
+    </td>
+                                                                    </tr></=
+tbody></table>
+</th></tr></tbody></table>
+</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-box; font=
+-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, =
+Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'=
+; position: relative; border-collapse: collapse; font-size: 1px; line-heigh=
+t: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+</tbody></table>
+</td=
+>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(249, 250, 252);">
+                   =20
+                    <table class=3D"rnb-del-min-width rnb-tmpl-width" width=
+=3D"100%" cellpadding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-siz=
+ing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI'=
+, Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoj=
+i', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt; mso-table=
+-rspace: 0pt; border-collapse: collapse; border-spacing: 0; width: 100%!imp=
+ortant; min-width: 590px;" name=3D"Layout_5" id=3D"Layout_5"><tbody style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative;"><tr style=3D"border-=
+collapse: collapse;">
+<td class=3D"rnb-del-min-width" align=3D"center" va=
+lign=3D"top" bgcolor=3D"#f9fafc" style=3D"box-sizing: border-box; font-fami=
+ly: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial=
+, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; pos=
+ition: relative; border-collapse: collapse; min-width: 590px; background-co=
+lor: rgb(249, 250, 252);">
+                                <a href=3D"#" name=3D"Layout_5" style=3D"bo=
+x-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Sego=
+e UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI=
+ Emoji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-he=
+ight-rule: exactly;"></a>
+                                <table width=3D"590" class=3D"rnb-container=
+" cellpadding=3D"0" border=3D"0" align=3D"center" cellspacing=3D"0" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"><tb=
+ody style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSy=
+stemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Em=
+oji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr styl=
+e=3D"border-collapse: collapse;">
+<td height=3D"10" style=3D"box-sizing: =
+border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Rob=
+oto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', '=
+Segoe UI Symbol'; position: relative; border-collapse: collapse; font-size:=
+ 1px; line-height: 10px; mso-hide: all;">=C2=A0</td>
+                                    </tr>
+<tr style=3D"border-collapse: c=
+ollapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" style=3D"bo=
+x-sizing: border-box; position: relative; border-collapse: collapse; font-s=
+ize: 14px; font-family: Arial,Helvetica,sans-serif; color: #888888;" align=
+=3D"left">
+   =20
+                                            <table width=3D"100%" border=3D=
+"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-container" sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0=
+pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacing: 0;"><=
+tbody style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMac=
+SystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color =
+Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><tr style=
+=3D"border-collapse: collapse;">
+<th class=3D"rnb-force-col" style=3D"box=
+-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe=
+ UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI =
+Emoji', 'Segoe UI Symbol'; position: relative; padding-right: 20px; padding=
+-left: 20px; mso-padding-alt: 0 0 0 20px; font-weight: normal;" valign=3D"t=
+op">
+   =20
+                                                        <table border=3D"0"=
+ valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"264" align=3D"=
+left" class=3D"rnb-col-2 rnb-social-text-left" style=3D"box-sizing: border-=
+box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, He=
+lvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe U=
+I Symbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt=
+; border-collapse: collapse; border-spacing: 0; border-bottom: 0;"><tbody s=
+tyle=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemF=
+ont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji',=
+ 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><tr style=3D"bor=
+der-collapse: collapse;">
+<td valign=3D"top" style=3D"box-sizing: border-=
+box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, He=
+lvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe U=
+I Symbol'; position: relative; border-collapse: collapse;">
+                                                                    <table =
+cellpadding=3D"0" border=3D"0" align=3D"left" cellspacing=3D"0" class=3D"rn=
+b-btn-col-content" style=3D"box-sizing: border-box; font-family: -apple-sys=
+tem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, =
+'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relativ=
+e; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collapse: collapse;=
+ border-spacing: 0;"><tbody style=3D"box-sizing: border-box; font-family: -=
+apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, san=
+s-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position=
+: relative;"><tr style=3D"border-collapse: collapse;"><td valign=3D"middle"=
+ align=3D"left" style=3D"box-sizing: border-box; position: relative; border=
+-collapse: collapse; font-size: 14px; font-family: Arial,Helvetica,sans-ser=
+if; color: #888888; line-height: 16px;" class=3D"rnb-text-center">
+                                                                           =
+     <div style=3D"box-sizing: border-box; font-family: -apple-system, Blin=
+kMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Co=
+lor Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<d=
+iv style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSys=
+temFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emo=
+ji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">Hotline: 035=
+6.105.899<br>
+    Email: hotro@unimall.vn<br>
+    =C2=A0</div>
+    </div>
+                                                                           =
+ </td></tr></tbody></table>
+</td>
+                                                            </tr></tbody></=
+table>
+</th>
+<th ng-if=3D"item.text.align=3D=3D'left'" class=3D"rnb-for=
+ce-col rnb-social-width" valign=3D"top" style=3D"box-sizing: border-box; fo=
+nt-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica=
+, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbo=
+l'; position: relative; mso-padding-alt: 0 20px 0 0; padding-right: 15px;">
+   =20
+                                                        <table border=3D"0"=
+ valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"246" align=3D"=
+right" class=3D"rnb-last-col-2" style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collap=
+se: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box; f=
+ont-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetic=
+a, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symb=
+ol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<td v=
+align=3D"middle" class=3D"rnb-text-center" ng-init=3D"width=3DsetSocialIcon=
+sBlockWidth(item)" width=3D"205" align=3D"right" style=3D"box-sizing: borde=
+r-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, =
+Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe=
+ UI Symbol'; position: relative; border-collapse: collapse;">
+                                                                           =
+      <div class=3D"rnb-social-center" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative;">
+                                                                           =
+         <table align=3D"left" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collaps=
+e: collapse; border-spacing: 0; float: left; display: inline-block;" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody style=3D"box-sizing: bord=
+er-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,=
+ Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Sego=
+e UI Symbol'; position: relative;"><tr style=3D"border-collapse: collapse;"=
+>
+<td style=3D"box-sizing: border-box; font-family: -apple-system, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-c=
+ollapse: collapse; padding: 0px 5px 5px 0px; mso-padding-alt: 0px 2px 5px 0=
+px;" align=3D"left">
+                                                                           =
+                     <span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; color: #ffffff; font-weight: normal;">
+                                                                           =
+                     <a target=3D"_blank" href=3D"https://www.facebook.com/=
+UniMallvietnam" style=3D"box-sizing: border-box; font-family: -apple-system=
+, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Ap=
+ple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; =
+color: #3869d4; mso-line-height-rule: exactly;"><img alt=3D"Facebook" borde=
+r=3D"0" hspace=3D"0" vspace=3D"0" style=3D"box-sizing: border-box; font-fam=
+ily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Aria=
+l, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; po=
+sition: relative; max-width: 100%; border: none; vertical-align: top;" targ=
+et=3D"_blank" src=3D"https://app.sendinblue.com/rnb-editor/assets/new_image=
+s/theme1/rnb_ico_fb.png"></a></span>
+                                                                           =
+                  </td>
+                                                                           =
+               </tr></tbody></table>
+</div>
+                                                                           =
+      <div class=3D"rnb-social-center" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative;">
+                                                                           =
+         <table align=3D"left" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collaps=
+e: collapse; border-spacing: 0; float: left; display: inline-block;" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody style=3D"box-sizing: bord=
+er-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,=
+ Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Sego=
+e UI Symbol'; position: relative;"><tr style=3D"border-collapse: collapse;"=
+>
+<td style=3D"box-sizing: border-box; font-family: -apple-system, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-c=
+ollapse: collapse; padding: 0px 5px 5px 0px; mso-padding-alt: 0px 2px 5px 0=
+px;" align=3D"left">
+                                                                           =
+                     <span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; color: #ffffff; font-weight: normal;">
+                                                                           =
+                     <a target=3D"_blank" href=3D"#" style=3D"box-sizing: b=
+order-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Robo=
+to, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'S=
+egoe UI Symbol'; position: relative; color: #3869d4; mso-line-height-rule: =
+exactly;"><img alt=3D"Twitter" border=3D"0" hspace=3D"0" vspace=3D"0" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; max-width: 100%; bord=
+er: none; vertical-align: top;" target=3D"_blank" src=3D"https://app.sendin=
+blue.com/rnb-editor/assets/new_images/theme1/rnb_ico_tw.png"></a></span>
+                                                                           =
+                  </td>
+                                                                           =
+               </tr></tbody></table>
+</div>
+                                                                           =
+   =20
+                                                                           =
+      <div class=3D"rnb-social-center" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative;">
+                                                                           =
+         <table align=3D"left" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collaps=
+e: collapse; border-spacing: 0; float: left; display: inline-block;" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody style=3D"box-sizing: bord=
+er-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,=
+ Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Sego=
+e UI Symbol'; position: relative;"><tr style=3D"border-collapse: collapse;"=
+>
+<td style=3D"box-sizing: border-box; font-family: -apple-system, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-c=
+ollapse: collapse; padding: 0px 5px 5px 0px; mso-padding-alt: 0px 2px 5px 0=
+px;" align=3D"left">
+                                                                           =
+                     <span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; color: #ffffff; font-weight: normal;">
+                                                                           =
+                     <a target=3D"_blank" href=3D"https://www.instagram.com=
+/unimallvietnam/" style=3D"box-sizing: border-box; font-family: -apple-syst=
+em, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, '=
+Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative=
+; color: #3869d4; mso-line-height-rule: exactly;"><img alt=3D"Instagram" bo=
+rder=3D"0" hspace=3D"0" vspace=3D"0" style=3D"box-sizing: border-box; font-=
+family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, A=
+rial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol';=
+ position: relative; max-width: 100%; border: none; vertical-align: top;" t=
+arget=3D"_blank" src=3D"https://app.sendinblue.com/rnb-editor/assets/new_im=
+ages/theme1/rnb_ico_ig.png"></a></span>
+                                                                           =
+                  </td>
+                                                                           =
+               </tr></tbody></table>
+</div>
+                                                                           =
+      <div class=3D"rnb-social-center" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative;">
+                                                                           =
+         <table align=3D"left" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-collaps=
+e: collapse; border-spacing: 0; float: left; display: inline-block;" border=
+=3D"0" cellpadding=3D"0" cellspacing=3D"0"><tbody style=3D"box-sizing: bord=
+er-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto,=
+ Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Sego=
+e UI Symbol'; position: relative;"><tr style=3D"border-collapse: collapse;"=
+>
+<td style=3D"box-sizing: border-box; font-family: -apple-system, BlinkM=
+acSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Colo=
+r Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; border-c=
+ollapse: collapse; padding: 0px 5px 5px 0px; mso-padding-alt: 0px 2px 5px 0=
+px;" align=3D"left">
+                                                                           =
+                     <span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; color: #ffffff; font-weight: normal;">
+                                                                           =
+                     <a target=3D"_blank" href=3D"https://www.youtube.com/c=
+hannel/UCpa5xYUOwFvncN603HW9wBQ" style=3D"box-sizing: border-box; font-fami=
+ly: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial=
+, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; pos=
+ition: relative; color: #3869d4; mso-line-height-rule: exactly;"><img alt=
+=3D"Youtube" border=3D"0" hspace=3D"0" vspace=3D"0" style=3D"box-sizing: bo=
+rder-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Robot=
+o, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Se=
+goe UI Symbol'; position: relative; max-width: 100%; border: none; vertical=
+-align: top;" target=3D"_blank" src=3D"https://app.sendinblue.com/rnb-edito=
+r/assets/new_images/theme1/rnb_ico_yt.png"></a></span>
+                                                                           =
+                  </td>
+                                                                           =
+               </tr></tbody></table>
+</div>
+                                                                           =
+   </td>
+                                                                           =
+</tr></tbody></table>
+</th>
+</tr></tbody></table>
+</td>
+                                    </tr>
+<tr style=3D"border-collapse: c=
+ollapse;">
+<td height=3D"10" style=3D"box-sizing: border-box; font-family=
+: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, =
+sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posit=
+ion: relative; border-collapse: collapse; font-size: 1px; line-height: 10px=
+; mso-hide: all;">=C2=A0</td>
+                                    </tr>
+</tbody></table>
+</td>
+                        </tr></tbody></table>
+</div>
+</td>
+        </tr>
+<tr style=3D"border-collapse: collapse;">
+<td align=3D"ce=
+nter" valign=3D"top" style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; border-collapse: collapse;">
+   =20
+                <div style=3D"box-sizing: border-box; font-family: -apple-s=
+ystem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif=
+, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relat=
+ive; background-color: rgb(255, 255, 255); border-radius: 0px;">
+                    <table class=3D"rnb-del-min-width" width=3D"100%" cellp=
+adding=3D"0" border=3D"0" cellspacing=3D"0" style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; b=
+order-collapse: collapse; border-spacing: 0; min-width: 100%;" name=3D"Layo=
+ut_14"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;">
+<td class=3D"rnb-del-min-width" =
+align=3D"center" valign=3D"top" style=3D"box-sizing: border-box; font-famil=
+y: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial,=
+ sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; posi=
+tion: relative; border-collapse: collapse; min-width: 0 !important;">
+                            <a href=3D"#" name=3D"Layout_14" style=3D"box-s=
+izing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe U=
+I', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Em=
+oji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-heigh=
+t-rule: exactly;"></a>
+                            <table width=3D"100%" border=3D"0" cellpadding=
+=3D"0" cellspacing=3D"0" class=3D"rnb-container" bgcolor=3D"#ffffff" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-lspace: 0pt=
+; mso-table-rspace: 0pt; border-spacing: 0; background-color: rgb(255, 255,=
+ 255); padding-left: 20px; padding-right: 20px; border-collapse: separate; =
+border-radius: 0px; border-bottom: 0px none rgb(200, 200, 200);"><tbody sty=
+le=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFon=
+t, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', '=
+Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;">
+<tr style=3D"bo=
+rder-collapse: collapse;">
+<td height=3D"0" style=3D"box-sizing: border-b=
+ox; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Hel=
+vetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI=
+ Symbol'; position: relative; border-collapse: collapse; font-size: 1px; li=
+ne-height: 0px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td valign=3D"top" class=3D"rnb-container-padding" ali=
+gn=3D"left" style=3D"box-sizing: border-box; font-family: -apple-system, Bl=
+inkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple =
+Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; bord=
+er-collapse: collapse;">
+   =20
+                                                    <table width=3D"100%" b=
+order=3D"0" cellpadding=3D"0" cellspacing=3D"0" class=3D"rnb-columns-contai=
+ner" style=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacS=
+ystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color E=
+moji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; mso-table-l=
+space: 0pt; mso-table-rspace: 0pt; border-collapse: collapse; border-spacin=
+g: 0;"><tbody style=3D"box-sizing: border-box; font-family: -apple-system, =
+BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Appl=
+e Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative;"><=
+tr style=3D"border-collapse: collapse;"><th class=3D"rnb-force-col" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; text-align: left; fon=
+t-weight: normal; padding-right: 0px;" valign=3D"top">
+   =20
+                                                                <table bord=
+er=3D"0" valign=3D"top" cellspacing=3D"0" cellpadding=3D"0" width=3D"100%" =
+align=3D"left" class=3D"rnb-col-1" style=3D"box-sizing: border-box; font-fa=
+mily: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Ari=
+al, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; p=
+osition: relative; mso-table-lspace: 0pt; mso-table-rspace: 0pt; border-col=
+lapse: collapse; border-spacing: 0;"><tbody style=3D"box-sizing: border-box=
+; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helve=
+tica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI S=
+ymbol'; position: relative;"><tr style=3D"border-collapse: collapse;">
+<t=
+d style=3D"box-sizing: border-box; position: relative; border-collapse: col=
+lapse; font-size: 14px; font-family: Arial,Helvetica,sans-serif, sans-serif=
+; color: #3c4858;">
+<div style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; text-align: center;"><span style=3D"box-sizing: border-box; font=
+-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, =
+Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'=
+; position: relative; font-size: 15px;">* =C4=90=C3=A2y email t=E1=BB=B1 =
+=C4=91=E1=BB=99ng g=E1=BB=ADi t=E1=BB=AB h=E1=BB=87 th=E1=BB=91ng c=
+=E1=BB=A7a UniMall; vui l=C3=B2ng kh=C3=B4ng tr=E1=BA=A3 l=E1=BB=9Di Email =
+n=C3=A0y.</span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: center;">=C2=A0</div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: center;"><span style=3D"box-sizing: border-box; font-family: -apple-sy=
+stem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relati=
+ve; color: #0000FF;"><span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; font-size: 16px;"> <a href=3D"https://unimall.vn/" style=3D"box-=
+sizing: border-box; font-family: -apple-system, BlinkMacSystemFont, 'Segoe =
+UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI E=
+moji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-line-heig=
+ht-rule: exactly;">UniMall</a> | <a href=3D"https://unimall.vn/vi/san-pham/=
+gia-vi-tu-nhien.html" style=3D"box-sizing: border-box; font-family: -apple-=
+system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-seri=
+f, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: rela=
+tive; color: #3869d4; mso-line-height-rule: exactly;">Gia V=E1=BB=8B T=
+=E1=BB=B1 Nhi=C3=AAn</a> | <a href=3D"https://unimall.vn/dang-nhap" style=
+=3D"box-sizing: border-box; font-family: -apple-system, BlinkMacSystemFont,=
+ 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Se=
+goe UI Emoji', 'Segoe UI Symbol'; position: relative; color: #3869d4; mso-l=
+ine-height-rule: exactly;">=C4=90=C4=83ng nh=E1=BA=ADp t=C3=A0i kho=
+=E1=BA=A3n</a></span></span></div>
+   =20
+    <div style=3D"box-sizing: border-box; font-family: -apple-system, Blink=
+MacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Col=
+or Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relative; text-al=
+ign: center;"><span style=3D"box-sizing: border-box; font-family: -apple-sy=
+stem, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif,=
+ 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position: relati=
+ve; color: #000000;"><span style=3D"box-sizing: border-box; font-family: -a=
+pple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans=
+-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol'; position:=
+ relative; font-size: 16px;">Copyright =C2=A9 UniMallI, All rights reserved=
+.</span></span></div>
+    </td>
+                                                                    </tr></=
+tbody></table>
+</th></tr></tbody></table>
+</td>
+                                            </tr>
+<tr style=3D"border-col=
+lapse: collapse;">
+<td height=3D"20" style=3D"box-sizing: border-box; fon=
+t-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica,=
+ Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol=
+'; position: relative; border-collapse: collapse; font-size: 1px; line-heig=
+ht: 20px; mso-hide: all;">=C2=A0</td>
+                                            </tr>
+</tbody></table>
+</td=
+>
+                    </tr></tbody></table>
+</div>
+</td>
+        </tr>
+</tbody></table>
+</td>
+            </tr></tbody></table>
+</body>
+</html>
+
+--_=_swift_1667965694_60a6c25464c4f36d49f163a5803c0519_=_--
+
